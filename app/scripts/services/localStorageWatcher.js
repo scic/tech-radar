@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('techRadarApp').factory('localStorageWatcher', [
   '$log', '$rootScope', 'localStorage', function ($log, $rootScope, localStorage) {
     var syncWithLocalStorage;
@@ -13,9 +15,10 @@ angular.module('techRadarApp').factory('localStorageWatcher', [
         return storageObject;
       }, function () {
           /* Save changes to local storage */
-          return localStorage[storageKey] = JSON.stringify(storageObject);
-      /* Compare object for equality rather than for reference */
-      }, true);
+          localStorage[storageKey] = JSON.stringify(storageObject);
+          return localStorage[storageKey];
+        /* Compare object for equality rather than for reference */
+        }, true);
       return storageObject;
     };
     return {
