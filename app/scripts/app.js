@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('techRadarApp', [])
+angular.module('techRadarApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
