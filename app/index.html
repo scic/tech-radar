@@ -16,60 +16,32 @@
         <!-- endbuild -->
 </head>
   <body ng-app="techRadarApp">
-    <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-    <![endif]-->
-
-    <!--[if lt IE 9]>
-      <script src="bower_components/es5-shim/es5-shim.js"></script>
-      <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
 
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/d3/d3.js"></script>
 
-        <!-- build:js scripts/plugins.js -->
-        <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-tooltip.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-modal.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-transition.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-button.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-popover.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-typeahead.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-carousel.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/plugins.js -->
+    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <!-- endbuild -->
 
-        <!-- build:js scripts/modules.js -->
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/services/localStorage.js"></script>
-        <script src="scripts/services/localStorageWatcher.js"></script>
-        <script src="scripts/services/radarService.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/directives/radarDiagram.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/localStorage.js"></script>
+    <script src="scripts/services/localStorageWatcher.js"></script>
+    <script src="scripts/services/radarService.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/directives/radarDiagram.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

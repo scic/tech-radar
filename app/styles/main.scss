@@ -1,8 +1,7 @@
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
-@import "bootstrap-sass/lib/bootstrap";
-@import "bootstrap-sass/lib/responsive";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
 /* Put your CSS here */
 html, body {
@@ -65,7 +64,7 @@ input[type="text"].input-small {
 }
 .category {
   padding: 5px;
-  @include border-radius(5px);
+/*   @include border-radius(5px); */
   margin-bottom: 5px;
 }
 .mouseover-title {

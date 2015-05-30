@@ -9,6 +9,7 @@ files = [
   JASMINE_ADAPTER,
   'app/bower_components/angular/angular.js',
   'app/bower_components/angular-mocks/angular-mocks.js',
+  'app/bower_components/underscore/underscore-min.js',
   'app/scripts/*.js',
   'app/scripts/**/*.js',
   'test/mock/**/*.js',
@@ -46,7 +47,7 @@ autoWatch = false;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome'];
+browsers = ['Firefox'];
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 5000;

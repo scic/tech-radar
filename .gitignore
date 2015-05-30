@@ -9,3 +9,5 @@ app/bower_components
 *.ipr
 *.iws
 .idea/
+
+.directory

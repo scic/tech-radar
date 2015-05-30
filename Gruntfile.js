@@ -29,9 +29,9 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
-      compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server']
+      css: {
+        files: '**/*.scss',
+        tasks: ['sass']
       },
       livereload: {
         options: {
@@ -82,6 +82,21 @@ module.exports = function (grunt) {
         }
       }
     },
+    sass: {
+      options: {
+        sourceMap: true
+      },
+      server: {
+        files: {
+          '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+        }
+      },
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+        }
+      }
+    },
     open: {
       server: {
         url: 'http://localhost:<%= connect.options.port %>'
@@ -108,27 +123,6 @@ module.exports = function (grunt) {
         'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
-    },
-    compass: {
-      options: {
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        generatedImagesDir: '.tmp/images/generated',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/bower_components',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
-        relativeAssets: false
-      },
-      dist: {},
-      server: {
-        options: {
-          debugInfo: true
-        }
-      }
     },
     // not used since Uglify task does concat,
     // but still available if needed
@@ -241,13 +235,13 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'compass:server'
+        'sass:server'
       ],
       test: [
-        'compass'
+        'sass'
       ],
       dist: [
-        'compass:dist',
+        'sass',
         'imagemin',
         'svgmin',
         'htmlmin'
