@@ -187,18 +187,16 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             return d.label;
           });
 
-//         $log.info('Redrawing');
+        $log.info('Redrawing');
           
         var techEnter = technologies.enter().append('g').attr('class', 'tech-label')
           .on('mouseover', function (d) {
-            d3.select(this).classed('active', true);
             d.active = true;
             redrawTechCircles();
           })
           .on('mouseout', function (d) {
             if(!d.clicked) {
               d.active = false;
-              d3.select(this).classed('active', false);
               redrawTechCircles();
             }
           })
@@ -207,11 +205,10 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             d3.selectAll('.tech-label').each(function(status) {
               status.active = false;
               status.clicked = false;
-              d3.select(this).classed('active', false);
             });
             d.active = newClickState;
             d.clicked = newClickState;
-            d3.select(this).classed('active', newClickState);
+            scope.$broadcast('tech-selected', d);
             redrawTechCircles();
           });
 
@@ -242,6 +239,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             return d.y;
           });
         technologies.exit().remove();
+        redrawTechCircles(true);
       }
 
       scope.radarData = radarService.radar.data;
@@ -264,8 +262,14 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         };
       }
 
-      function redrawTechCircles() {
-        scope.$apply();
+      function redrawTechCircles(skipApply) {
+        if(!skipApply){
+          scope.$apply();
+        }
+          
+        technologies.each(function(d) {
+          d3.select(this).classed('active', d.active);
+        });
 
         technologies.selectAll('text').transition()
           .duration(150)
@@ -285,10 +289,6 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             return d.active ? hoverTechRadius : (d.radius ? d.radius : defaultTechRadius);
           });
       }
-
-      //.on('click', function(d, i){console.log(d,i);});
-      //slices.selectAll('path').data(function(d) {console.log(d); return d;})
-
     }
   };
 }]);

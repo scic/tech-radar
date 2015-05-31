@@ -3,15 +3,11 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
-/* Put your CSS here */
-html, body {
-  //margin: 20px;
-}
-
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    margin: 5px 20px;
 }
 
 .container {
@@ -60,27 +56,47 @@ input[type="text"].input-small {
   margin-right: 10px;
 }
 .active-tech {
-/*  border-color: teal;
-  border-style: solid;
-  border-width: thin;*/
   font-weight: bold;
   color: #4889ff;
 }
 .category {
-  padding: 5px;
-/*   @include border-radius(5px); */
+  padding: 10px;
   margin-bottom: 5px;
+  border-radius: 8px;
+  
+  h5 {
+    font-size: 1.1em
+  }
+  
+  li > a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 .mouseover-title {
   position:absolute;
   color: slategrey;
 }
 
-.tech-label:hover {
+.tech-label {
+  background: white;
+  font-size: 8pt;
+}
+
+.tech-label.active {
   font-weight: 800;
   font-size: 1.05em;
+  color: #4889ff;
   cursor: pointer;
   > circle {
     fill: black !important;
   }
+}
+
+.technologyType {
+  font-size: 0.8em;
+  vertical-align: super;
+  color: grey;
+  padding-left: 8px;
 }

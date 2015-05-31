@@ -1,9 +1,5 @@
-<style type="text/css">
-    .tech-label {
-        background: white;
-        font-size: 8pt;
-    }
-</style>
+<h1>Javascript Technology Radar</h1>
+<br>
 <div class="container">
     <div class="row">
         <div class="pull-left">
@@ -16,23 +12,22 @@
         <div class="pull-left radar-manager">
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData" ng-class="{active : status.active}">
-                    <a ng-click="setActive(status)">{{ status.label }}</a>
+                    <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
                 </li>
             </ul>
             <div ng-repeat="status in radarData" ng-show="status.active">
-                <div class="category"  ng-repeat="category in status.categories" style="background-color: {{category.color}}">
+                <div class="category" ng-repeat="category in status.categories" style="background-color: {{category.color}}">
                     <h5 style="display: inline;">{{ category.label }}</h5>
-                    <form ng-submit="category.addingOne = false; addTech(category, category.new)" class="new-category">
-                        <a ng-click="category.addingOne = true" ng-hide="category.addingOne">new</a>
-                        <a ng-click="category.new = ''; category.addingOne = false" ng-show="category.addingOne">cancel</a>
-                        <input type="text" ng-model="category.new" class="input-small" ng-show="category.addingOne" style="margin-top: 5px"/>
-                    </form>
                     <ul>
                         <li ng-repeat="technology in category.technologies" ng-class="{'active-tech' : technology.active}">
-                            {{ technology.label }} <i class="icon-remove" ng-click="removeTech(category, technology)"></i></li>
+                          <a ng-click="selectTech(category, technology)">{{ technology.label }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row" ng-if="activeTechnology">
+      <h2>{{activeTechnology.label}}</h2>
     </div>
 </div>

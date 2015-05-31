@@ -9,27 +9,50 @@ angular.module('techRadarApp')
       status.active = true;
     };
 
-    //console.log($scope.radarData[0]);
     $scope.setActive($scope.radarData[0]);
-
-    $scope.addTech = function(category, tech) {
-      if(tech) {
-        category.technologies.push({label: tech});
-        delete category.new;
-      }
+    
+    $scope.$on('tech-selected', function(e, status) {
+      $scope.activeTechnology = status;
+      $scope.setActive($scope.activeStatus);
+      $('.nav-tabs li a[data-label="' + $scope.activeStatus.label + '"]').tab('show');
+    });
+    
+    $scope.selectTech = function(category, tech) {
+      var setInactive = function(elem) {
+        elem.clicked = false;
+        elem.active = false;
+      };
+      
+      var allCategories = _.flatten(_.pluck($scope.radarData, 'categories'));
+      allCategories.forEach(setInactive);
+      var allTechnologies = _.flatten(_.pluck(allCategories, 'technologies'));
+      allTechnologies.forEach(setInactive);
+      
+      category.active = true;
+      tech.clicked = true;
+      tech.active = true;
+      $scope.activeTechnology = tech;
+      updateActive($scope.radarData);
     };
-
-    $scope.removeTech = function(category, tech) {
-      category.technologies = _.without(category.technologies, tech);
-    };
-    $scope.$watch('radarData', function(data){
+    
+    var updateActive = function(data){
       if(!data) {
         return;
       }
-      $scope.activeCategory =  _.findWhere(_.flatten(_.pluck(data, 'categories')), {active: true});
-      $scope.activeStatus = _.find(data, function(status){
+      var activeCategory = _.findWhere(_.flatten(_.pluck(data, 'categories')), {active: true});
+      var activeStatus = _.find(data, function(status){
         return _.indexOf(status.categories, $scope.activeCategory) >= 0;
       });
-    }, true);
+      
+      if(activeCategory) {
+        $scope.activeCategory = activeCategory;
+      }
+      
+      if(activeStatus) {
+        $scope.activeStatus = activeStatus;
+      }
+    };
+    
+    $scope.$watch('radarData', updateActive, true);
 
   }]);
