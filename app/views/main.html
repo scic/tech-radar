@@ -20,7 +20,7 @@
                     <h5 style="display: inline;">{{ category.label }}</h5>
                     <ul>
                         <li ng-repeat="technology in category.technologies" ng-class="{'active-tech' : technology.active}">
-                          <a ng-click="selectTech(category, technology)">{{ technology.label }}</a>
+                          <a ng-click="selectTech(category, technology)">{{ technology.label }} <span class="technologyType">{{ technology.type }}</span></a>
                         </li>
                     </ul>
                 </div>
@@ -32,6 +32,7 @@
         </div>
     </div>
     <div class="row" ng-if="activeTechnology">
-      <h2>{{activeTechnology.label}}</h2>
+      <h2>{{activeTechnology.label}}<span class="technologyType">{{activeTechnology.type}}</span></h2>
+      {{activeTechnology.text}}
     </div>
 </div>
