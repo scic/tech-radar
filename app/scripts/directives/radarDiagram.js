@@ -187,15 +187,31 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             return d.label;
           });
 
-        $log.info('Redrawing');
-
+//         $log.info('Redrawing');
+          
         var techEnter = technologies.enter().append('g').attr('class', 'tech-label')
           .on('mouseover', function (d) {
+            d3.select(this).classed('active', true);
             d.active = true;
             redrawTechCircles();
           })
           .on('mouseout', function (d) {
-            d.active = false;
+            if(!d.clicked) {
+              d.active = false;
+              d3.select(this).classed('active', false);
+              redrawTechCircles();
+            }
+          })
+          .on('click', function (d) {
+            var newClickState = !d.clicked;
+            d3.selectAll('.tech-label').each(function(status) {
+              status.active = false;
+              status.clicked = false;
+              d3.select(this).classed('active', false);
+            });
+            d.active = newClickState;
+            d.clicked = newClickState;
+            d3.select(this).classed('active', newClickState);
             redrawTechCircles();
           });
 
