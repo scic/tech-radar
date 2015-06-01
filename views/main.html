@@ -1,38 +1,38 @@
-<style type="text/css">
-    .tech-label {
-        background: white;
-        font-size: 8pt;
-    }
-</style>
+<h1>Javascript Technology Radar</h1>
+<br>
 <div class="container">
     <div class="row">
-        <div class="span7">
+        <div class="pull-left">
             <span class="mouseover-title">
                 <h3>{{activeCategory.label}}</h3>
-                <h4>{{ activeStatus.label}}</h4>
+                <h4>{{activeStatus.label}}</h4>
             </span>
-            <radar-diagram height="700" width="700">
+            <radar-diagram height="800" width="800">
         </div>
-        <div class="span4 radar-manager">
+        <div class="pull-left radar-manager">
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData" ng-class="{active : status.active}">
-                    <a ng-click="setActive(status)">{{ status.label }}</a>
+                    <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
                 </li>
             </ul>
-            <div ng-repeat="status in radarData" ng-show="status.active">
+            <div ng-repeat="status in radarData" ng-show="status.active" class="side-panel">
                 <div class="category" ng-repeat="category in status.categories" style="background-color: {{category.color}}">
                     <h5 style="display: inline">{{ category.label }}</h5>
-                    <form ng-submit="category.addingOne = false; addTech(category, category.new)" class="new-category">
-                        <a ng-click="category.addingOne = true" ng-hide="category.addingOne">new</a>
-                        <a ng-click="category.new = ''; category.addingOne = false" ng-show="category.addingOne">cancel</a>
-                        <input type="text" ng-model="category.new" class="input-small" ng-show="category.addingOne" style="margin-top: 5px">
-                    </form>
                     <ul>
                         <li ng-repeat="technology in category.technologies" ng-class="{'active-tech' : technology.active}">
-                            {{ technology.label }} <i class="icon-remove" ng-click="removeTech(category, technology)"></i></li>
+                          <a ng-click="selectTech(category, technology)">{{ technology.label }} <span class="technologyType">{{ technology.type }}</span></a>
+                        </li>
                     </ul>
+                </div>
+                <div>
+                  <h3>{{status.label}}</h3>
+                  {{status.text}}
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row" ng-if="activeTechnology">
+      <h2>{{activeTechnology.label}}<span class="technologyType">{{activeTechnology.type}}</span></h2>
+      {{activeTechnology.text}}
     </div>
 </div>
