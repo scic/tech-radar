@@ -1,122 +1,65 @@
 'use strict';
 
-var dataA = {
-  categories: ['Tools', 'Platforms', 'Languages & Frameworks', 'Techniques'],
-  rings:      ['Adopt', 'Trial', 'Assess', 'Hold'],
-  technologies: [
-    {label: 'Health check pages', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Windows infrastructure automation', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Guerrilla user testing', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Work-in-Progress limits', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Automated deployment pipeline', category: 'Techniques', ring: 'Adopt'},
-    {label: 'In process acceptance testing', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Advanced analytics', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Aggregates as documents', category: 'Techniques', ring: 'Adopt'},
-    {label: 'Polyglot Persistence', category: 'Techniques', ring: 'Trial'},
-    {label: 'Performance testing as a first-class citizen', category: 'Techniques', ring: 'Trial'},
-    {label: 'Out-of-container functional testing', category: 'Techniques', ring: 'Trial'},
-    {label: 'Micro-services', category: 'Techniques', ring: 'Trial'},
-    {label: 'Infrastructure automation of development workstations', category: 'Techniques', ring: 'Trial'},
-    {label: 'Agile analytics', category: 'Techniques', ring: 'Trial'},
-    {label: 'Logs as data', category: 'Techniques', ring: 'Trial'},
-    {label: 'Responsive web design', category: 'Techniques', ring: 'Trial'},
-    {label: 'Mobile first', category: 'Techniques', ring: 'Trial'},
-    {label: 'Declarative provisioning', category: 'Techniques', ring: 'Trial'},
-    {label: 'Remote usability testing', category: 'Techniques', ring: 'Trial'},
-    {label: 'Semantic monitoring', category: 'Techniques', ring: 'Trial'},
-    {label: 'Edge Side Includes for page composition', category: 'Techniques', ring: 'Trial'},
-    {label: 'Configuration in DNS', category: 'Techniques', ring: 'Trial'},
-    {label: 'Deployment and scripting test tools', category: 'Techniques', ring: 'Assess'},
-    {label: 'Database based integration', category: 'Techniques', ring: 'Hold'},
-    {label: 'Feature branching', category: 'Techniques', ring: 'Hold'},
-    {label: 'Test recorders', category: 'Techniques', ring: 'Hold'},
-    {label: 'Exhaustive browser-based testing', category: 'Techniques', ring: 'Hold'},
-    {label: 'Infrastructure as code', category: 'Tools', ring: 'Adopt'},
-    {label: 'Embedded servlet containers', category: 'Tools', ring: 'Adopt'},
-    {label: 'Silverback', category: 'Tools', ring: 'Adopt'},
-    {label: 'AppCode', category: 'Tools', ring: 'Adopt'},
-    {label: 'Jasmine paired with Node.js', category: 'Tools', ring: 'Adopt'},
-    {label: 'Immutable servers', category: 'Tools', ring: 'Adopt'},
-    {label: 'Graphite', category: 'Tools', ring: 'Adopt'},
-    {label: 'Vagrant', category: 'Tools', ring: 'Trial'},
-    {label: 'Gradle', category: 'Tools', ring: 'Trial'},
-    {label: 'PSake', category: 'Tools', ring: 'Trial'},
-    {label: 'Frank', category: 'Tools', ring: 'Trial'},
-    {label: 'JavaScript micro frameworks', category: 'Tools', ring: 'Trial'},
-    {label: 'Jade', category: 'Tools', ring: 'Trial'},
-    {label: 'NuGet', category: 'Tools', ring: 'Trial'},
-    {label: 'Highcharts', category: 'Tools', ring: 'Trial'},
-    {label: 'D3', category: 'Tools', ring: 'Trial'},
-    {label: 'Apache Pig', category: 'Tools', ring: 'Trial'},
-    {label: 'SaaS performance testing tools', category: 'Tools', ring: 'Trial'},
-    {label: 'Dependency Structure Matrices', category: 'Tools', ring: 'Trial'},
-    {label: 'Locust', category: 'Tools', ring: 'Trial'},
-    {label: 'Rake for Java & .Net', category: 'Tools', ring: 'Trial'},
-    {label: 'Logic-free markup', category: 'Tools', ring: 'Assess'},
-    {label: 'Crazy Egg', category: 'Tools', ring: 'Assess'},
-    {label: 'Zipkin', category: 'Tools', ring: 'Assess'},
-    {label: 'Zucchini', category: 'Tools', ring: 'Assess'},
-    {label: 'GemJars', category: 'Tools', ring: 'Assess'},
-    {label: 'Light Table', category: 'Tools', ring: 'Assess'},
-    {label: 'Riemann', category: 'Tools', ring: 'Assess'},
-    {label: 'Enterprise service bus', category: 'Tools', ring: 'Hold'},
-    {label: 'VCS with implicit workflow', category: 'Tools', ring: 'Hold'},
-    {label: 'Maven', category: 'Tools', ring: 'Hold'},
-    {label: 'Clojure', category: 'Languages & Frameworks', ring: 'Adopt'},
-    {label: 'Scala', category: 'Languages & Frameworks', ring: 'Adopt'},
-    {label: 'Care about languages', category: 'Languages & Frameworks', ring: 'Adopt'},
-    {label: 'SASS, SCSS, LESS, and Stylus', category: 'Languages & Frameworks', ring: 'Adopt'},
-    {label: 'Domain-Specific Languages', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'Scratch, Alice, and Kodu', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'Twitter Bootstrap', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'Sinatra', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'AngularJS and Knockout', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'Require.js', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'Dropwizard', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'Jekyll', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'HTML5 for offline applications', category: 'Languages & Frameworks', ring: 'Trial'},
-    {label: 'F#', category: 'Languages & Frameworks', ring: 'Assess'},
-    {label: 'ClojureScript', category: 'Languages & Frameworks', ring: 'Assess'},
-    {label: 'Lua', category: 'Languages & Frameworks', ring: 'Assess'},
-    {label: 'RubyMotion', category: 'Languages & Frameworks', ring: 'Assess'},
-    {label: 'Gremlin', category: 'Languages & Frameworks', ring: 'Assess'},
-    {label: 'JavaScript as a platform', category: 'Languages & Frameworks', ring: 'Assess'},
-    {label: 'Backbone.js', category: 'Languages & Frameworks', ring: 'Hold'},
-    {label: 'Logic in stored procedures', category: 'Languages & Frameworks', ring: 'Hold'},
-    {label: 'Google Dart', category: 'Languages & Frameworks', ring: 'Hold'},
-    {label: 'Component-based frameworks', category: 'Languages & Frameworks', ring: 'Hold'},
-    {label: 'ATOM', category: 'Platforms', ring: 'Adopt'},
-    {label: 'Care about hardware', category: 'Platforms', ring: 'Adopt'},
-    {label: 'Mobile payment systems', category: 'Platforms', ring: 'Adopt'},
-    {label: 'Neo4J', category: 'Platforms', ring: 'Adopt'},
-    {label: 'Node.js', category: 'Platforms', ring: 'Trial'},
-    {label: 'Riak', category: 'Platforms', ring: 'Trial'},
-    {label: 'Domain-specific PaaS', category: 'Platforms', ring: 'Trial'},
-    {label: 'Linux containers', category: 'Platforms', ring: 'Trial'},
-    {label: 'Private clouds', category: 'Platforms', ring: 'Trial'},
-    {label: 'Hybrid clouds', category: 'Platforms', ring: 'Trial'},
-    {label: 'MongoDB', category: 'Platforms', ring: 'Trial'},
-    {label: 'Continuous integration in the cloud', category: 'Platforms', ring: 'Trial'},
-    {label: 'Couchbase', category: 'Platforms', ring: 'Trial'},
-    {label: 'Single threaded servers with asynchronous I/O', category: 'Platforms', ring: 'Trial'},
-    {label: 'Calatrava', category: 'Platforms', ring: 'Assess'},
-    {label: 'Datomic', category: 'Platforms', ring: 'Assess'},
-    {label: 'Vert.x', category: 'Platforms', ring: 'Assess'},
-    {label: 'Azure', category: 'Platforms', ring: 'Assess'},
-    {label: 'Open source IaaS', category: 'Platforms', ring: 'Assess'},
-    {label: 'BigQuery', category: 'Platforms', ring: 'Assess'},
-    {label: 'Windows Phone', category: 'Platforms', ring: 'Assess'},
-    {label: 'WS-*', category: 'Platforms', ring: 'Hold'},
-    {label: 'Java portal servers', category: 'Platforms', ring: 'Hold'},
-    {label: 'Zero-code packages', category: 'Platforms', ring: 'Hold'},
-    {label: 'Singleton infrastructure', category: 'Platforms', ring: 'Hold'},
-    {label: 'Meteor.js', category: 'Platforms', ring: 'Hold'},
-  ]
+var typeToCategory = {
+  'Node Installer': 'Tools',
+  'Node Version': 'Platforms',
+  'IDE / Editor': 'Tools',
+  'Build System': 'Tools',
+  'Javascript Enhancers': 'Languages & Frameworks',
+  'Linter / Codestyle': 'Tools',
+  'CSS Preprocessors': 'Languages & Frameworks',
+  'Techniques': 'Techniques'
+};
+
+var dataB = {
+  'Build System': {
+    'gulp': {category: 'Adopt', text: 'gulp is to grunt what gradle is to maven. You can programm your build in JavaScript instead of only declare how it should work. Furthermore it works with streams and is usually faster than grunt.'},
+    'grunt': {category: 'Hold', text: 'gulp is just the better alternative.'},
+    'broccoli': {category: 'Hold', text: 'To new and experimental to consider right now. But maybe in the future.'}
+  },
+  'IDE / Editor': {
+    'Webstorm': {category: 'Adopt', text: 'If you wan\'t to spend money for your IDE. Spend it here. It has the best Javascript support.'},
+    'atom': {category: 'Assess', text: 'Interesting, but sadly still a bit unstable.'},
+    'brackets': {category: 'Assess', text: 'Interesting'},
+    'Sublime': {category: 'Trial or Alternative', text: 'If you like nagware. Your OK here. If you wan\'t to pay for software consider Webstorm. It\'s in a similar price range.'},
+    'Eclipse': {category: 'Hold', text: 'Javasscript support is too bad right now. Coupled wit the slowness of Eclipse you\'re better off with a good editor.'}
+  },
+  'Node Version': {
+    'v0.10': {category: 'Adopt', text: 'The proven version. Use it, it works.'},
+    'v0.12': {category: 'Trial or Alternative', text: 'Brand new. There might still be some incompatablilities and bugs out there. It has a short lifespan because of the merger of nodejs and iojs'},
+    'iojs': {category: 'Hold', text: 'If you already have it, stick with it until the new merged nodejs and iojs versions is out. Otherwise if you really want cutting each use v0.12.'}
+  },
+  'Javascript Enhancers': {
+    'es6-babel': {category: 'Trial or Alternative', text: 'EcmaScript6 will be the next standard. So try it out.'},
+    'es6-traceur': {category: 'Hold', text: 'Better use babel. It produces more readable code and implements more features of es6.'},
+    'typescript': {category: 'Trial or Alternative', text: 'If you are missing types in Javascript, this is it. Otherwise give es6 a spin.'},
+    'Coffescript': {category: 'Hold', text: 'Replaced by es6.'},
+    'Google Dart': {category: 'Hold', text: 'Failed to gain traction until now.'}
+  },
+  'Linter / Codestyle': {
+    'eslint': {category: 'Adopt', text: 'Has a plugin architecture to include linters for framework specific code. You can add your own ones. Also has codestyle checking ability. A slight performance penalty to jshint, since builds an AST.'},
+    'jshint': {category: 'Trial or Alternative', text: 'Configurable version of jslint. It\'s good, but consider migrating to eslint.'},
+    'jslint': {category: 'Hold', text: 'Not configurable. Just replace it.'},
+    'jscs': {category: 'Assess', text: 'Only a style checker. Eslint might provide these features aswell.'}
+  },
+  'CSS Preprocessors': {
+    'sass': {category: 'Adopt', text: 'Since to be more widespread knowadays than LESS.'},
+    'LESS': {category: 'Trial or Alternative', text: 'If you have a css framework that uses it, then use it, otherwise sass seams to be more widespread.'},
+    'stylus': {category: 'Hold', text: 'to exotic to be considered.'},
+    'Plain CSS': {category: 'Hold', text: 'You really should use CSS preprocessor. Your gonna love it.'}
+  },
+  'Techniques': {
+    'One-Click workspace setup': {category: 'Adopt', text: 'Good to add new project members or updating the stack.'},
+    'Infrastructure as code': {category: 'Adopt', text: 'Reproducible system setup'},
+    'Application containers': {category: 'Adopt', text: 'Independent artefacts. Reproducible deployments.'}
+  },
+  
 };
 
 var newData = [
   {
     label: 'Adopt',
+    text: 'These items are proven and should be adopted for their intended usage. These items are recommended over their siblings in the same area.',
     categories: [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
@@ -125,7 +68,8 @@ var newData = [
     ]
   },
   {
-    label: 'Trial',
+    label: 'Trial or Alternative',
+    text: 'To be used in smallscale projects. Or technolgies that have a better alternative for most use cases.',
     categories: [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
@@ -135,6 +79,7 @@ var newData = [
   },
   {
     label: 'Assess',
+    text: 'Try these out.',
     categories: [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
@@ -144,6 +89,7 @@ var newData = [
   },
   {
     label: 'Hold',
+    text: 'Don\'t start with it now. Try to actively replace.',
     categories: [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
@@ -153,10 +99,16 @@ var newData = [
   }
 ];
 
-_.each(dataA.technologies, function(data) {
-  var ring = _.findWhere(newData, {label: data.ring});
-  var slice = _.findWhere(ring.categories, {label: data.category});
-  slice.technologies.push({label: data.label});
+var _ = require('underscore'); //jshint ignore:line
+
+_.each(dataB, function(entries, type) {
+  var category = typeToCategory[type];
+  _.each(entries, function(data, tech) {
+    var ring = _.findWhere(newData, {label: data.category});
+    var slice = _.findWhere(ring.categories, {label: category});
+    slice.technologies.push({label: tech, type: type, text: data.text});
+  });
 });
 
+// console.log(JSON.stringify(newData, null, '  ')); // pretty print
 console.log(JSON.stringify(newData));

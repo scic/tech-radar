@@ -9,6 +9,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       this.data = data ? data : [
         {
           label: 'Adopt',
+          text: 'Switch to these',
           categories: [
             { label: 'Tools', technologies: []},
             { label: 'Techniques', technologies: []},
@@ -36,6 +37,7 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
         },
         {
           label: 'Hold',
+          text: 'Don\'t start with it now. Try to replace.',
           categories: [
             { label: 'Tools', technologies: []},
             { label: 'Techniques', technologies: []},
@@ -50,158 +52,12 @@ angular.module('techRadarApp').factory('radarService', ['$log', '$timeout', 'loc
       var categories = _.pluck(this.data, 'categories');
       return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
     };
+    
+    /*jshint -W109 */
+    var myData = [{"label":"Adopt","text":"These items are proven and should be adopted for their intended usage. These items are recommended over their siblings in the same area.","categories":[{"label":"Tools","technologies":[{"label":"gulp","type":"Build System","text":"gulp is to grunt what gradle is to maven. You can programm your build in JavaScript instead of only declare how it should work. Furthermore it works with streams and is usually faster than grunt."},{"label":"Webstorm","type":"IDE / Editor","text":"If you wan't to spend money for your IDE. Spend it here. It has the best Javascript support."},{"label":"eslint","type":"Linter / Codestyle","text":"Has a plugin architecture to include linters for framework specific code. You can add your own ones. Also has codestyle checking ability. A slight performance penalty to jshint, since builds an AST."}]},{"label":"Techniques","technologies":[{"label":"One-Click workspace setup","type":"Techniques","text":"Good to add new project members or updating the stack."},{"label":"Infrastructure as code","type":"Techniques","text":"Reproducible system setup"},{"label":"Application containers","type":"Techniques","text":"Independent artefacts. Reproducible deployments."}]},{"label":"Platforms","technologies":[{"label":"v0.10","type":"Node Version","text":"The proven version. Use it, it works."}]},{"label":"Languages & Frameworks","technologies":[{"label":"sass","type":"CSS Preprocessors","text":"Since to be more widespread knowadays than LESS."}]}]},{"label":"Trial or Alternative","text":"To be used in smallscale projects. Or technolgies that have a better alternative for most use cases.","categories":[{"label":"Tools","technologies":[{"label":"Sublime","type":"IDE / Editor","text":"If you like nagware. Your OK here. If you wan't to pay for software consider Webstorm. It's in a similar price range."},{"label":"jshint","type":"Linter / Codestyle","text":"Configurable version of jslint. It's good, but consider migrating to eslint."}]},{"label":"Techniques","technologies":[]},{"label":"Platforms","technologies":[{"label":"v0.12","type":"Node Version","text":"Brand new. There might still be some incompatablilities and bugs out there. It has a short lifespan because of the merger of nodejs and iojs"}]},{"label":"Languages & Frameworks","technologies":[{"label":"es6-babel","type":"Javascript Enhancers","text":"EcmaScript6 will be the next standard. So try it out."},{"label":"typescript","type":"Javascript Enhancers","text":"If you are missing types in Javascript, this is it. Otherwise give es6 a spin."},{"label":"LESS","type":"CSS Preprocessors","text":"If you have a css framework that uses it, then use it, otherwise sass seams to be more widespread."}]}]},{"label":"Assess","text":"Try these out.","categories":[{"label":"Tools","technologies":[{"label":"atom","type":"IDE / Editor","text":"Interesting, but sadly still a bit unstable."},{"label":"brackets","type":"IDE / Editor","text":"Interesting"},{"label":"jscs","type":"Linter / Codestyle","text":"Only a style checker. Eslint might provide these features aswell."}]},{"label":"Techniques","technologies":[]},{"label":"Platforms","technologies":[]},{"label":"Languages & Frameworks","technologies":[]}]},{"label":"Hold","text":"Don't start with it now. Try to actively replace.","categories":[{"label":"Tools","technologies":[{"label":"grunt","type":"Build System","text":"gulp is just the better alternative."},{"label":"broccoli","type":"Build System","text":"To new and experimental to consider right now. But maybe in the future."},{"label":"Eclipse","type":"IDE / Editor","text":"Javasscript support is too bad right now. Coupled wit the slowness of Eclipse you're better off with a good editor."},{"label":"jslint","type":"Linter / Codestyle","text":"Not configurable. Just replace it."}]},{"label":"Techniques","technologies":[]},{"label":"Platforms","technologies":[{"label":"iojs","type":"Node Version","text":"If you already have it, stick with it until the new merged nodejs and iojs versions is out. Otherwise if you really want cutting each use v0.12."}]},{"label":"Languages & Frameworks","technologies":[{"label":"es6-traceur","type":"Javascript Enhancers","text":"Better use babel. It produces more readable code and implements more features of es6."},{"label":"Coffescript","type":"Javascript Enhancers","text":"Replaced by es6."},{"label":"Google Dart","type":"Javascript Enhancers","text":"Failed to gain traction until now."},{"label":"stylus","type":"CSS Preprocessors","text":"to exotic to be considered."},{"label":"Plain CSS","type":"CSS Preprocessors","text":"You really should use CSS preprocessor. Your gonna love it."}]}]}];
+    /*jshint +W109 */
 
-    var defaultData = [
-      {'label': 'Adopt', 'categories': [
-        {'label': 'Tools', 'technologies': [
-          {'label': 'Infrastructure as code'},
-          {'label': 'Embedded servlet containers'},
-          {'label': 'Silverback'},
-          {'label': 'AppCode'},
-          {'label': 'Jasmine paired with Node.js'},
-          {'label': 'Immutable servers'},
-          {'label': 'Graphite'}
-        ]},
-        {'label': 'Techniques', 'technologies': [
-          {'label': 'Health check pages'},
-          {'label': 'Windows infrastructure automation'},
-          {'label': 'Guerrilla user testing'},
-          {'label': 'Work-in-Progress limits'},
-          {'label': 'Automated deployment pipeline'},
-          {'label': 'In process acceptance testing'},
-          {'label': 'Advanced analytics'},
-          {'label': 'Aggregates as documents'}
-        ]},
-        {'label': 'Platforms', 'technologies': [
-          {'label': 'ATOM'},
-          {'label': 'Care about hardware'},
-          {'label': 'Mobile payment systems'},
-          {'label': 'Neo4J'}
-        ]},
-        {'label': 'Languages & Frameworks', 'technologies': [
-          {'label': 'Clojure'},
-          {'label': 'Scala'},
-          {'label': 'Care about languages'},
-          {'label': 'SASS, SCSS, LESS, and Stylus'}
-        ]}
-      ]},
-      {'label': 'Trial', 'categories': [
-        {'label': 'Tools', 'technologies': [
-          {'label': 'Vagrant'},
-          {'label': 'Gradle'},
-          {'label': 'PSake'},
-          {'label': 'Frank'},
-          {'label': 'JavaScript micro frameworks'},
-          {'label': 'Jade'},
-          {'label': 'NuGet'},
-          {'label': 'Highcharts'},
-          {'label': 'D3'},
-          {'label': 'Apache Pig'},
-          {'label': 'SaaS performance testing tools'},
-          {'label': 'Dependency Structure Matrices'},
-          {'label': 'Locust'},
-          {'label': 'Rake for Java & .Net'}
-        ]},
-        {'label': 'Techniques', 'technologies': [
-          {'label': 'Polyglot Persistence'},
-          {'label': 'Performance testing as a first-class citizen'},
-          {'label': 'Out-of-container functional testing'},
-          {'label': 'Micro-services'},
-          {'label': 'Infrastructure automation of development workstations'},
-          {'label': 'Agile analytics'},
-          {'label': 'Logs as data'},
-          {'label': 'Responsive web design'},
-          {'label': 'Mobile first'},
-          {'label': 'Declarative provisioning'},
-          {'label': 'Remote usability testing'},
-          {'label': 'Semantic monitoring'},
-          {'label': 'Edge Side Includes for page composition'},
-          {'label': 'Configuration in DNS'}
-        ]},
-        {'label': 'Platforms', 'technologies': [
-          {'label': 'Node.js'},
-          {'label': 'Riak'},
-          {'label': 'Domain-specific PaaS'},
-          {'label': 'Linux containers'},
-          {'label': 'Private clouds'},
-          {'label': 'Hybrid clouds'},
-          {'label': 'MongoDB'},
-          {'label': 'Continuous integration in the cloud'},
-          {'label': 'Couchbase'},
-          {'label': 'Single threaded servers with asynchronous I/O'}
-        ]},
-        {'label': 'Languages & Frameworks', 'technologies': [
-          {'label': 'Domain-Specific Languages'},
-          {'label': 'Scratch, Alice, and Kodu'},
-          {'label': 'Twitter Bootstrap'},
-          {'label': 'Sinatra'},
-          {'label': 'AngularJS and Knockout'},
-          {'label': 'Require.js'},
-          {'label': 'Dropwizard'},
-          {'label': 'Jekyll'},
-          {'label': 'HTML5 for offline applications'}
-        ]}
-      ]},
-      {'label': 'Assess', 'categories': [
-        {'label': 'Tools', 'technologies': [
-          {'label': 'Logic-free markup'},
-          {'label': 'Crazy Egg'},
-          {'label': 'Zipkin'},
-          {'label': 'Zucchini'},
-          {'label': 'GemJars'},
-          {'label': 'Light Table'},
-          {'label': 'Riemann'}
-        ]},
-        {'label': 'Techniques', 'technologies': [
-          {'label': 'Deployment and scripting test tools'}
-        ]},
-        {'label': 'Platforms', 'technologies': [
-          {'label': 'Calatrava'},
-          {'label': 'Datomic'},
-          {'label': 'Vert.x'},
-          {'label': 'Azure'},
-          {'label': 'Open source IaaS'},
-          {'label': 'BigQuery'},
-          {'label': 'Windows Phone'}
-        ]},
-        {'label': 'Languages & Frameworks', 'technologies': [
-          {'label': 'F#'},
-          {'label': 'ClojureScript'},
-          {'label': 'Lua'},
-          {'label': 'RubyMotion'},
-          {'label': 'Gremlin'},
-          {'label': 'JavaScript as a platform'}
-        ]}
-      ]},
-      {'label': 'Hold', 'categories': [
-        {'label': 'Tools', 'technologies': [
-          {'label': 'Enterprise service bus'},
-          {'label': 'VCS with implicit workflow'},
-          {'label': 'Maven'}
-        ]},
-        {'label': 'Techniques', 'technologies': [
-          {'label': 'Database based integration'},
-          {'label': 'Feature branching'},
-          {'label': 'Test recorders'},
-          {'label': 'Exhaustive browser-based testing'}
-        ]},
-        {'label': 'Platforms', 'technologies': [
-          {'label': 'WS-*'},
-          {'label': 'Java portal servers'},
-          {'label': 'Zero-code packages'},
-          {'label': 'Singleton infrastructure'},
-          {'label': 'Meteor.js'}
-        ]},
-        {'label': 'Languages & Frameworks', 'technologies': [
-          {'label': 'Backbone.js'},
-          {'label': 'Logic in stored procedures'},
-          {'label': 'Google Dart'},
-          {'label': 'Component-based frameworks'}
-        ]}
-      ]}
-    ];
-
-    var radarData = localStorageWatcher.syncWithLocalStorage(LOCAL_STORAGE_ID, defaultData);
+    var radarData = localStorageWatcher.syncWithLocalStorage(LOCAL_STORAGE_ID, myData);
 
     var radar = new Radar(radarData);
 

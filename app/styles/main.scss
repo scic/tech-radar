@@ -42,19 +42,6 @@ input[type="text"].input-small {
   margin: 5px;
 }
 
-.new-category {
-  max-height: 25px;
-  font-size: 8pt;
-  float: right;
-  padding-right: 10px;
-  margin: 0;
-}
-.new-category a {
-  float: right;
-}
-.new-category input {
-  margin-right: 10px;
-}
 .active-tech {
   font-weight: bold;
   color: #4889ff;
@@ -74,6 +61,11 @@ input[type="text"].input-small {
     cursor: pointer;
   }
 }
+
+.side-panel {
+  width: 400px;
+}
+
 .mouseover-title {
   position:absolute;
   color: slategrey;

@@ -15,7 +15,7 @@
                     <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
                 </li>
             </ul>
-            <div ng-repeat="status in radarData" ng-show="status.active">
+            <div ng-repeat="status in radarData" ng-show="status.active" class="side-panel">
                 <div class="category" ng-repeat="category in status.categories" style="background-color: {{category.color}}">
                     <h5 style="display: inline;">{{ category.label }}</h5>
                     <ul>
