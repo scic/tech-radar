@@ -20,7 +20,7 @@
                     <h5 style="display: inline">{{ category.label }}</h5>
                     <ul>
                         <li ng-repeat="technology in category.technologies" ng-class="{'active-tech' : technology.active}">
-                          <a ng-click="selectTech(category, technology)">{{ technology.label }} <span class="technologyType">{{ technology.type }}</span></a>
+                          <a ng-click="selectTech(category, technology)">{{ technology.label }}</a><span class="technologyType">{{ technology.type }}</span>
                         </li>
                     </ul>
                 </div>
@@ -31,8 +31,14 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-if="activeTechnology">
-      <h2>{{activeTechnology.label}}<span class="technologyType">{{activeTechnology.type}}</span></h2>
-      {{activeTechnology.text}}
+    <div class="row info" ng-if="activeTechnology">
+      <div>
+        <h2>{{activeTechnology.label}}<span class="technologyType">{{activeTechnology.type}}</span></h2>
+        <div class="well well-lg">{{activeTechnology.text}}</div>
+      </div>
+      <h4>Technologies of the same type</h4>
+      <ul class="same-technologies">
+        <li ng-repeat="technology in technologiesOfSameType"><a ng-click="selectTech(activeCategory, technology)">{{technology.label}}</a></li>
+      </ul>
     </div>
 </div>
