@@ -3,16 +3,24 @@
 angular.module('techRadarApp')
   .controller('MainCtrl', ['$scope', 'radarService', function ($scope, radarService) {
     $scope.radarData = radarService.radar.data;
-
+    
+    var allCategories = _.flatten(_.pluck($scope.radarData, 'categories'));
+    var allTechnologies = _.flatten(_.pluck(allCategories, 'technologies'));
+    
+    var technologiesOfSameType = function(tech) {
+      return _.where(allTechnologies, {type: tech.type})
+    };
+    
     $scope.setActive = function(status) {
       _.each($scope.radarData, function(status) { status.active = false; });
       status.active = true;
     };
-
+    
     $scope.setActive($scope.radarData[0]);
     
-    $scope.$on('tech-selected', function(e, status) {
-      $scope.activeTechnology = status;
+    $scope.$on('tech-selected', function(e, tech) {
+      $scope.activeTechnology = tech;
+      $scope.technologiesOfSameType = technologiesOfSameType(tech);
       $scope.setActive($scope.activeStatus);
       $('.nav-tabs li a[data-label="' + $scope.activeStatus.label + '"]').tab('show');
     });
@@ -22,10 +30,8 @@ angular.module('techRadarApp')
         elem.clicked = false;
         elem.active = false;
       };
-      
-      var allCategories = _.flatten(_.pluck($scope.radarData, 'categories'));
+
       allCategories.forEach(setInactive);
-      var allTechnologies = _.flatten(_.pluck(allCategories, 'technologies'));
       allTechnologies.forEach(setInactive);
       
       category.active = true;
@@ -33,6 +39,8 @@ angular.module('techRadarApp')
       tech.active = true;
       $scope.activeTechnology = tech;
       updateActive($scope.radarData);
+      
+      $scope.technologiesOfSameType = technologiesOfSameType(tech);
     };
     
     var updateActive = function(data){

@@ -10,31 +10,12 @@ body {
     margin: 5px 20px;
 }
 
+li > a {
+  cursor: pointer;
+}
+
 .container {
   width: 1400px;
-}
-
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-}
-
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-input[type="text"].input-small {
-  height: 10px;
-  font-size: 9pt;
-  line-height: 10px;
 }
 
 .radar-manager ul {
@@ -52,14 +33,20 @@ input[type="text"].input-small {
   border-radius: 8px;
   
   h5 {
-    font-size: 1.1em
+    font-size: 1.1em;
   }
   
   li > a {
     color: black;
-    text-decoration: none;
-    cursor: pointer;
   }
+}
+
+.info {
+  width: 750px;
+}
+
+.same-technologies {
+  float: left;
 }
 
 .side-panel {
