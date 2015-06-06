@@ -45,6 +45,13 @@ angular.module('techRadarApp').factory('radarService', [function() {
           ]
         }
       ];
+      
+      data.forEach(function(status) {
+        var technologies = _.flatten(_.pluck(_.flatten(status.categories), 'technologies'));
+        technologies.forEach(function(technology) {
+          technology.status = status.label;
+        });
+      });
     }
 
     Radar.prototype.getTechnologies = function() {

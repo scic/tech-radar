@@ -27,6 +27,7 @@ li > a {
   font-weight: bold;
   color: #4889ff;
 }
+
 .category {
   padding: 10px;
   margin-bottom: 5px;
@@ -47,6 +48,9 @@ li > a {
 
 .same-technologies {
   float: left;
+  li {
+    padding: 2px 0;
+  }
 }
 
 .side-panel {
@@ -78,4 +82,8 @@ li > a {
   vertical-align: super;
   color: grey;
   padding-left: 8px;
+}
+
+.badge {
+  font-size: 0.9em;
 }
