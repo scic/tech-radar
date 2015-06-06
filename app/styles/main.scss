@@ -6,8 +6,13 @@ $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
     color: #333;
     margin: 5px 20px;
+}
+
+h4 {
+  font-size: 20px;
 }
 
 li > a {
@@ -16,45 +21,6 @@ li > a {
 
 .container {
   width: 1400px;
-}
-
-.radar-manager ul {
-  list-style-type: none;
-  margin: 5px;
-}
-
-.active-tech {
-  font-weight: bold;
-  color: #4889ff;
-}
-
-.category {
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 8px;
-  
-  h5 {
-    font-size: 1.1em;
-  }
-  
-  li > a {
-    color: black;
-  }
-}
-
-.info {
-  width: 750px;
-}
-
-.same-technologies {
-  float: left;
-  li {
-    padding: 2px 0;
-  }
-}
-
-.side-panel {
-  width: 400px;
 }
 
 .mouseover-title {
@@ -79,6 +45,11 @@ li > a {
   }
 }
 
+.badge {
+  font-size: 0.8em;
+  margin-left: 3px;
+}
+
 .technologyType {
   font-size: 0.8em;
   vertical-align: super;
@@ -86,6 +57,52 @@ li > a {
   padding-left: 8px;
 }
 
-.badge {
-  font-size: 0.9em;
+.radar-manager {
+  float: left;
+  
+  ul {
+    list-style-type: none;
+    margin: 5px;
+  }
+  
+  .side-panel {
+    width: 400px;
+    
+    .active-tech {
+      font-weight: bold;
+      color: #4889ff;
+    }
+  }
+}
+
+.category {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  
+  h5 {
+    font-size: 1.1em;
+  }
+  
+  li > a {
+    color: black;
+  }
+}
+
+.info {
+  width: 750px;
+  
+  .same-technologies {
+    float: left;
+    li {
+      padding: 2px 0;
+    }
+  }
+}
+
+.overview {
+  table td {
+    border: 1px solid;
+    padding: 5px;
+  }
 }

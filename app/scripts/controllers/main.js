@@ -7,6 +7,8 @@ angular.module('techRadarApp')
     var allCategories = _.flatten(_.pluck($scope.radarData, 'categories'));
     var allTechnologies = _.flatten(_.pluck(allCategories, 'technologies'));
     
+    $scope.technologiesByType = _.groupBy(allTechnologies, 'type');
+    
     var technologiesOfSameType = function(tech) {
       return _.where(allTechnologies, {type: tech.type})
     };

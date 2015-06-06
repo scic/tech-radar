@@ -9,7 +9,7 @@
             </span>
             <radar-diagram height="800" width="800"/>
         </div>
-        <div class="pull-left radar-manager">
+        <div class="radar-manager">
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData" ng-class="{active : status.active}">
                     <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
@@ -31,6 +31,7 @@
             </div>
         </div>
     </div>
+    
     <div class="row info" ng-if="activeTechnology">
       <div>
         <h2>
@@ -46,5 +47,26 @@
           <a ng-click="selectTech(activeCategory, technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
         </li>
       </ul>
+    </div>
+    
+    <div class="row overview">
+      <h2>Overview</h2>
+      <div ng-repeat="(label, technologies) in technologiesByType">
+        <h3>{{label}}</h3>
+        <table>
+          <colgroup>
+            <col span="1" style="width: 150px">
+            <col span="1" style="width: 150px">
+            <col span="1" style="width: 900px">
+          </colgroup>
+          <tbody>
+            <tr ng-repeat="technology in technologies">
+              <td>{{technology.label}}</td>
+              <td><span class="badge">{{technology.status}}</span></td>
+              <td>{{technology.text}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 </div>
