@@ -11,10 +11,10 @@ var typeToCategory = {
   'Techniques': 'Techniques'
 };
 
-var dataB = {
+var allData = {
   'Build System': {
     'gulp': {category: 'Adopt', text: 'gulp is to grunt what gradle is to maven. You can programm your build in JavaScript instead of only declare how it should work. Furthermore it works with streams and is usually faster than grunt.'},
-    'grunt': {category: 'Hold', text: 'gulp is just the better alternative.'},
+    'grunt': {category: 'Trial or Alternative', text: 'gulp is just the better alternative.'},
     'broccoli': {category: 'Hold', text: 'To new and experimental to consider right now. But maybe in the future.'}
   },
   'IDE / Editor': {
@@ -56,7 +56,7 @@ var dataB = {
   
 };
 
-var newData = [
+var dataByStatus = [
   {
     label: 'Adopt',
     text: 'These items are proven and should be adopted for their intended usage. These items are recommended over their siblings in the same area.',
@@ -64,7 +64,7 @@ var newData = [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
       { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []},
+      { label: 'Languages & Frameworks', technologies: []}
     ]
   },
   {
@@ -74,7 +74,7 @@ var newData = [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
       { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []},
+      { label: 'Languages & Frameworks', technologies: []}
     ]
   },
   {
@@ -84,7 +84,7 @@ var newData = [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
       { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []},
+      { label: 'Languages & Frameworks', technologies: []}
     ]
   },
   {
@@ -94,21 +94,35 @@ var newData = [
       { label: 'Tools', technologies: []},
       { label: 'Techniques', technologies: []},
       { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []},
+      { label: 'Languages & Frameworks', technologies: []}
     ]
   }
 ];
 
-var _ = require('underscore'); //jshint ignore:line
 
-_.each(dataB, function(entries, type) {
+var _ = require('underscore'); //jshint ignore:line
+var fs = require('fs');
+
+_.each(allData, function(entries, type) {
   var category = typeToCategory[type];
   _.each(entries, function(data, tech) {
-    var ring = _.findWhere(newData, {label: data.category});
+    var ring = _.findWhere(dataByStatus, {label: data.category});
     var slice = _.findWhere(ring.categories, {label: category});
     slice.technologies.push({label: tech, type: type, text: data.text});
   });
 });
 
-// console.log(JSON.stringify(newData, null, '  ')); // pretty print
-console.log(JSON.stringify(newData));
+
+var data = JSON.stringify(dataByStatus, null, '  ');
+var intro = "'use strict';\n/*jshint -W109 */\nangular.module('techRadarApp').constant('radarData',\n"; //jshint ignore:line
+var end = '\n);';
+
+var fileLocation = 'services/radarData.js';
+
+fs.writeFile(fileLocation, intro + data + end, function(err) {
+  if(err) {
+    return console.log(err);
+  }
+  
+  console.log('The file was saved at ' + fileLocation);
+}); 

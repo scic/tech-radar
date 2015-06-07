@@ -10,7 +10,7 @@ angular.module('techRadarApp')
     $scope.technologiesByType = _.groupBy(allTechnologies, 'type');
     
     var technologiesOfSameType = function(tech) {
-      return _.where(allTechnologies, {type: tech.type})
+      return _.where(allTechnologies, {type: tech.type});
     };
     
     $scope.setActive = function(status) {
