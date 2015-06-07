@@ -9,7 +9,7 @@ Manage the technology on your radar with this interactive UI.
 
 See it in action with the **[Example Radar](http://scic.github.io/tech-radar).**
 
-![radar screenshot](https://raw.github.com/tnunamak/tech-radar/master/radar.png)
+![radar screenshot](https://raw.github.com/scic/tech-radar/master/radar.png)
 
 ## Build with your own data
 
