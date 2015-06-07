@@ -1,4 +1,4 @@
-<h1>Javascript Technology Radar</h1>
+<h1>{{title}}</h1>
 <br>
 <div class="container">
     <div class="row">
@@ -9,7 +9,7 @@
             </span>
             <radar-diagram height="800" width="800">
         </div>
-        <div class="pull-left radar-manager">
+        <div class="radar-manager">
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData" ng-class="{active : status.active}">
                     <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
@@ -31,14 +31,45 @@
             </div>
         </div>
     </div>
+    
     <div class="row info" ng-if="activeTechnology">
       <div>
-        <h2>{{activeTechnology.label}}<span class="technologyType">{{activeTechnology.type}}</span></h2>
+        <h2>
+          {{activeTechnology.label}}
+          <span class="badge">{{activeTechnology.status}}</span>
+          <span class="technologyType">{{activeTechnology.type}}</span>
+        </h2>
         <div class="well well-lg">{{activeTechnology.text}}</div>
       </div>
-      <h4>Technologies of the same type</h4>
+      <h4>Technologies of the type {{activeTechnology.type}}</h4>
       <ul class="same-technologies">
-        <li ng-repeat="technology in technologiesOfSameType"><a ng-click="selectTech(activeCategory, technology)">{{technology.label}}</a></li>
+        <li ng-repeat="technology in technologiesOfSameType">
+          <a ng-click="selectTech(activeCategory, technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
+        </li>
       </ul>
+    </div>
+    <div class="row info" ng-if="!activeTechnology">
+      Click on a technology in the radar or the list to show information about it.
+    </div>
+    
+    <div class="row overview">
+      <h1>Overview</h1>
+      <div ng-repeat="(label, technologies) in technologiesByType">
+        <h3>{{label}}</h3>
+        <table>
+          <colgroup>
+            <col span="1" style="width: 150px">
+            <col span="1" style="width: 150px">
+            <col span="1" style="width: 900px">
+          </colgroup>
+          <tbody>
+            <tr ng-repeat="technology in technologies">
+              <td>{{technology.label}}</td>
+              <td><span class="badge">{{technology.status}}</span></td>
+              <td>{{technology.text}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 </div>
