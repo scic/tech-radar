@@ -5,14 +5,16 @@
 
 Manage the technology on your radar with this interactive UI.
 
-See it in action with the [example radar](http://scic.github.io/tech-radar).
+## Demo
+
+See it in action with the **[Example Radar](http://scic.github.io/tech-radar).**
 
 ![radar screenshot](https://raw.github.com/tnunamak/tech-radar/master/radar.png)
 
 ## Build with your own data
 
-Edit the content in the generator then run it:
+Edit the content in the generator file called **radarDataGen.js** then run it:
 
-    node app/scripts/radarDataGen.js
+    node radarDataGen.js
     
-This will update the radarData.js file.
+This will update the radarData.js file in the application.

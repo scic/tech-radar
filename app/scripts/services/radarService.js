@@ -2,7 +2,8 @@
 
 angular.module('techRadarApp').factory('radarService', ['radarData', function(radarData) {
 
-    function Radar(data) {
+    function Radar(title, data) {
+      this.title = title || 'Technology Radar';
       this.data = data ? data : [
         {
           label: 'Adopt',
@@ -56,8 +57,8 @@ angular.module('techRadarApp').factory('radarService', ['radarData', function(ra
       var categories = _.pluck(this.data, 'categories');
       return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
     };
-
-    var radar = new Radar(radarData);
+    
+    var radar = new Radar(radarData.title, radarData.data);
 
     function getCategories() {
       var categories = _.pluck(radar.data, 'categories');

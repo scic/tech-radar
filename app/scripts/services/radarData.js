@@ -1,7 +1,8 @@
 'use strict';
 /*jshint -W109 */
-angular.module('techRadarApp').constant('radarData',
-[
+angular.module('techRadarApp').constant('radarData', {
+ title: 'Javascript Technology Radar',
+ data: [
   {
     "label": "Adopt",
     "text": "These items are proven and should be adopted for their intended usage. These items are recommended over their siblings in the same area.",
@@ -12,17 +13,32 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "gulp",
             "type": "Build System",
-            "text": "gulp is to grunt what gradle is to maven. You can programm your build in JavaScript instead of only declare how it should work. Furthermore it works with streams and is usually faster than grunt."
+            "text": "gulp is to grunt what gradle is to maven. You can program your build in JavaScript instead of only declaring how it should work. Furthermore it works with streams and is usually faster than grunt."
           },
           {
             "label": "Webstorm",
             "type": "IDE / Editor",
-            "text": "If you wan't to spend money for your IDE. Spend it here. It has the best Javascript support."
+            "text": "If you wan't to spend money for your IDE, spend it here. It has the best Javascript support with refactoring and autocomplete features."
           },
           {
             "label": "eslint",
             "type": "Linter / Codestyle",
-            "text": "Has a plugin architecture to include linters for framework specific code. You can add your own ones. Also has codestyle checking ability. A slight performance penalty to jshint, since builds an AST."
+            "text": "Has a plugin architecture to include linters for framework specific code. E.g. for Angular or Ember. You can add your own ones. Also has codestyle checking ability. A slight performance penalty to jshint, since it builds an AST."
+          },
+          {
+            "label": "npm",
+            "type": "Package Managers",
+            "text": "It's everywhere, just use it."
+          },
+          {
+            "label": "bower",
+            "type": "Package Managers",
+            "text": "A frontend only package manager. Widly used and works without problems."
+          },
+          {
+            "label": "browsersync",
+            "type": "Live Reload",
+            "text": "Supports reloading of frontend js files and injecting of css. Additionally supports the synching of page interactions over multiple browsers and devices."
           }
         ]
       },
@@ -42,7 +58,7 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "Application containers",
             "type": "Techniques",
-            "text": "Independent artefacts. Reproducible deployments."
+            "text": "Application containers such as docker provide a simple reproducible deployment method."
           }
         ]
       },
@@ -62,7 +78,17 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "sass",
             "type": "CSS Preprocessors",
-            "text": "Since to be more widespread knowadays than LESS."
+            "text": "Seams to be more widespread knowadays than LESS."
+          },
+          {
+            "label": "bootstrap",
+            "type": "CSS Frameworks",
+            "text": "Works well. Very widly used. Lots of good supporting components and extenstions."
+          },
+          {
+            "label": "Angular 1",
+            "type": "Frontend Frameworks",
+            "text": "Huge community. Lots of documentation and modules"
           }
         ]
       }
@@ -78,17 +104,27 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "grunt",
             "type": "Build System",
-            "text": "gulp is just the better alternative."
+            "text": "gulp is just the better alternative. If you already are on grunt there is no immediate reason to switch to gulp, just consider it. If you haven't started with grunt, use gulp."
           },
           {
             "label": "Sublime",
             "type": "IDE / Editor",
-            "text": "If you like nagware. Your OK here. If you wan't to pay for software consider Webstorm. It's in a similar price range."
+            "text": "You can use it for free, but it will nag you constantly. So if you don't mind it, your okay here. If you wan't to pay for software consider Webstorm. It's in a similar price range, but has more refactoring and autocomplete features."
           },
           {
             "label": "jshint",
             "type": "Linter / Codestyle",
             "text": "Configurable version of jslint. It's good, but consider migrating to eslint."
+          },
+          {
+            "label": "livereload",
+            "type": "Live Reload",
+            "text": "Works good, but browsersync has more features."
+          },
+          {
+            "label": "nodemon",
+            "type": "Live Reload",
+            "text": "Restart the node server on file changes. Watcher is known to be slow on windows."
           }
         ]
       },
@@ -102,7 +138,7 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "v0.12",
             "type": "Node Version",
-            "text": "Brand new. There might still be some incompatablilities and bugs out there. It has a short lifespan because of the merger of nodejs and iojs"
+            "text": "Brand new. There might still be some incompatablilities and bugs out there. It has a short lifespan because of the merger of nodejs and iojs. You should wait on that version."
           }
         ]
       },
@@ -117,12 +153,17 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "typescript",
             "type": "Javascript Enhancers",
-            "text": "If you are missing types in Javascript, this is it. Otherwise give es6 a spin."
+            "text": "If you are missing types in Javascript, this is it. Otherwise give es6-babel a spin."
           },
           {
             "label": "LESS",
             "type": "CSS Preprocessors",
             "text": "If you have a css framework that uses it, then use it, otherwise sass seams to be more widespread."
+          },
+          {
+            "label": "Ember",
+            "type": "Frontend Frameworks",
+            "text": "Good community. Good migration paths. Investigate it more."
           }
         ]
       }
@@ -149,6 +190,21 @@ angular.module('techRadarApp').constant('radarData',
             "label": "jscs",
             "type": "Linter / Codestyle",
             "text": "Only a style checker. Eslint might provide these features aswell."
+          },
+          {
+            "label": "browserify",
+            "type": "Package Managers",
+            "text": "A frontend package manager. Uses npm modules and turns them into frontend modules. Has certain build steps included, which might interfere with your custom build."
+          },
+          {
+            "label": "jspm",
+            "type": "Package Managers",
+            "text": "Interesting."
+          },
+          {
+            "label": "webpack",
+            "type": "Package Managers",
+            "text": "jspm might do the same but better."
           }
         ]
       },
@@ -162,7 +218,43 @@ angular.module('techRadarApp').constant('radarData',
       },
       {
         "label": "Languages & Frameworks",
-        "technologies": []
+        "technologies": [
+          {
+            "label": "ClojureScript",
+            "type": "Javascript Enhancers",
+            "text": "Intresting"
+          },
+          {
+            "label": "foundation",
+            "type": "CSS Frameworks",
+            "text": "Looks interesting."
+          },
+          {
+            "label": "iconic",
+            "type": "CSS Frameworks",
+            "text": "More mobile centric."
+          },
+          {
+            "label": "Angular 2",
+            "type": "Frontend Frameworks",
+            "text": "Still in developer preview. Best used with typescript."
+          },
+          {
+            "label": "Aurelia",
+            "type": "Frontend Frameworks",
+            "text": "Interesting, but not wildly used right now."
+          },
+          {
+            "label": "React",
+            "type": "Frontend Frameworks",
+            "text": "Fast rendering. Glimmer of Ember or the upcomming Angular 2 might be an alternative."
+          },
+          {
+            "label": "Knockout",
+            "type": "Frontend Frameworks",
+            "text": "Angular, Ember, React seam to be more popular."
+          }
+        ]
       }
     ]
   },
@@ -176,7 +268,12 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "broccoli",
             "type": "Build System",
-            "text": "To new and experimental to consider right now. But maybe in the future."
+            "text": "To new and experimental to consider right now. But maybe in the future. Angular 2 uses it."
+          },
+          {
+            "label": "brunch",
+            "type": "Build System",
+            "text": "To exotic to consider."
           },
           {
             "label": "Eclipse",
@@ -200,7 +297,7 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "iojs",
             "type": "Node Version",
-            "text": "If you already have it, stick with it until the new merged nodejs and iojs versions is out. Otherwise if you really want cutting each use v0.12."
+            "text": "If you already have it, stick with it until the new merged nodejs and iojs version is out. Otherwise if you really want cutting each use v0.12."
           }
         ]
       },
@@ -225,16 +322,16 @@ angular.module('techRadarApp').constant('radarData',
           {
             "label": "stylus",
             "type": "CSS Preprocessors",
-            "text": "to exotic to be considered."
+            "text": "To exotic to be considered."
           },
           {
             "label": "Plain CSS",
             "type": "CSS Preprocessors",
-            "text": "You really should use CSS preprocessor. Your gonna love it."
+            "text": "You really should use a CSS preprocessor. You're gonna love it."
           }
         ]
       }
     ]
   }
 ]
-);
+});

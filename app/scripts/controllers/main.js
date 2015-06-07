@@ -2,6 +2,7 @@
 
 angular.module('techRadarApp')
   .controller('MainCtrl', ['$scope', 'radarService', function ($scope, radarService) {
+    $scope.title = radarService.radar.title;
     $scope.radarData = radarService.radar.data;
     
     var allCategories = _.flatten(_.pluck($scope.radarData, 'categories'));
