@@ -1,9 +1,6 @@
 {
   "name": "tech-radar",
   "version": "0.0.0",
-  "dependencies": {
-    "grunt-karma": "~0.4.5"
-  },
   "devDependencies": {
     "connect-livereload": "~0.5.3",
     "grunt": "~0.4.5",
@@ -26,7 +23,13 @@
     "grunt-sass": "~1.0.0",
     "grunt-svgmin": "~2.0.1",
     "grunt-usemin": "~3.0.0",
-    "matchdep": "~0.3.0"
+    "jasmine-core": "^2.3.4",
+    "karma": "~0.12.36",
+    "karma-jasmine": "~0.3.5",
+    "karma-phantomjs-launcher": "~0.2.0",
+    "matchdep": "~0.3.0",
+    "phantomjs": "^1.9.17",
+    "underscore": "~1.8.3"
   },
   "engines": {
     "node": ">=0.10.0"

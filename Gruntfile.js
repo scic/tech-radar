@@ -120,7 +120,8 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc'
       },
       all: [
-        'Gruntfile.js',
+        'GruntFile.js',
+        'radarDataGen.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
     },
@@ -294,6 +295,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
+    'jshint',
     'clean:server',
     'concurrent:test',
     'connect:test',

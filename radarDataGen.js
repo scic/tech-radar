@@ -117,7 +117,7 @@ var data = JSON.stringify(dataByStatus, null, '  ');
 var intro = "'use strict';\n/*jshint -W109 */\nangular.module('techRadarApp').constant('radarData',\n"; //jshint ignore:line
 var end = '\n);';
 
-var fileLocation = 'services/radarData.js';
+var fileLocation = 'app/scripts/services/radarData.js';
 
 fs.writeFile(fileLocation, intro + data + end, function(err) {
   if(err) {
