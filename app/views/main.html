@@ -48,9 +48,12 @@
         </li>
       </ul>
     </div>
+    <div class="row info" ng-if="!activeTechnology">
+      Click on a technology in the radar or the list to show information about it.
+    </div>
     
     <div class="row overview">
-      <h2>Overview</h2>
+      <h1>Overview</h1>
       <div ng-repeat="(label, technologies) in technologiesByType">
         <h3>{{label}}</h3>
         <table>

@@ -32,7 +32,7 @@ li > a {
 
 .tech-label {
   background: white;
-  font-size: 8pt;
+  font-size: 9pt;
 }
 
 .tech-label.active {
@@ -101,6 +101,8 @@ li > a {
 }
 
 .overview {
+  margin-top: 50px;
+  
   table td {
     border: 1px solid;
     padding: 5px;

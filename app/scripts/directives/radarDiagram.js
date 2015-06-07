@@ -171,7 +171,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .attr('class', 'category');
 
       var technologies;
-      var truncatedLabelLength = 10;
+      var truncatedLabelLength = 12;
 
       function getTechLabelSubstring(label) {
         return (label.length <= truncatedLabelLength) ?
