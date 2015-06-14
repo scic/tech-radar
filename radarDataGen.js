@@ -1,4 +1,4 @@
-/* Run with node radarDataGen.js
+/* Run with: node radarDataGen.js
  * 
  * This will overwrite the file at app/scripts/services/radarData.js
 */
@@ -7,6 +7,29 @@
 
 // The title of your radar
 var title = 'Javascript Technology Radar';
+
+// List of your categories
+var categories = ['Tools', 'Techniques', 'Platforms', 'Languages & Frameworks'];
+
+// The status names with description
+var statusDefinitions = [
+  {
+    label: 'Adopt',
+    text: 'These items are proven and should be adopted for their intended usage. These items are recommended over their siblings in the same area.'
+  },
+  {
+    label: 'Trial or Alternative',
+    text: 'To be used in smallscale projects. Or technolgies that have a better alternative for most use cases.'
+  },
+  {
+    label: 'Assess',
+    text: 'Try these out.',
+  },
+  {
+    label: 'Hold',
+    text: 'Don\'t start with it now. Try to actively replace.',
+  }
+];
 
 // Map technology types to radar categories
 var typeToCategory = {
@@ -96,55 +119,24 @@ var allData = {
   }
 };
 
-// The status names and description with the categories
-var structure = [
-  {
-    label: 'Adopt',
-    text: 'These items are proven and should be adopted for their intended usage. These items are recommended over their siblings in the same area.',
-    categories: [
-      { label: 'Tools', technologies: []},
-      { label: 'Techniques', technologies: []},
-      { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []}
-    ]
-  },
-  {
-    label: 'Trial or Alternative',
-    text: 'To be used in smallscale projects. Or technolgies that have a better alternative for most use cases.',
-    categories: [
-      { label: 'Tools', technologies: []},
-      { label: 'Techniques', technologies: []},
-      { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []}
-    ]
-  },
-  {
-    label: 'Assess',
-    text: 'Try these out.',
-    categories: [
-      { label: 'Tools', technologies: []},
-      { label: 'Techniques', technologies: []},
-      { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []}
-    ]
-  },
-  {
-    label: 'Hold',
-    text: 'Don\'t start with it now. Try to actively replace.',
-    categories: [
-      { label: 'Tools', technologies: []},
-      { label: 'Techniques', technologies: []},
-      { label: 'Platforms', technologies: []},
-      { label: 'Languages & Frameworks', technologies: []}
-    ]
-  }
-];
 
 
 
 var _ = require('underscore'); //jshint ignore:line
 var fs = require('fs');
 
+// Create structure with the technologies
+var structure = statusDefinitions.map(function(statusItem) {
+  statusItem.categories = categories.map(function(category) {
+    return {
+      label: category,
+      technologies: []
+    };
+  });
+  return statusItem;
+});
+
+// Fill technologies into structure
 _.each(allData, function(entries, type) {
   var category = typeToCategory[type];
   _.each(entries, function(data, tech) {
@@ -154,7 +146,7 @@ _.each(allData, function(entries, type) {
   });
 });
 
-
+// Wrap into angular module with constant service
 var data = JSON.stringify(structure, null, '  ');
 var intro = "'use strict';\n/*jshint -W109 */\nangular.module('techRadarApp').constant('radarData', {\n title: '" + title + "',\n data: "; //jshint ignore:line
 var end = '\n});';
@@ -167,4 +159,4 @@ fs.writeFile(fileLocation, intro + data + end, function(err) {
   }
   
   console.log('The file was saved at ' + fileLocation);
-}); 
+});
