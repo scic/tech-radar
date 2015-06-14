@@ -43,6 +43,7 @@ var typeToCategory = {
   'CSS Frameworks': 'Languages & Frameworks',
   'Frontend Frameworks': 'Languages & Frameworks',
   'Functional Libraries': 'Languages & Frameworks',
+  'Promise Libraries': 'Languages & Frameworks',
   'Package Managers': 'Tools',
   'Live Reload': 'Tools',
   'Techniques': 'Techniques'
@@ -119,6 +120,11 @@ var allData = {
     'lodash-fp': {category: 'Assess', text: 'A wrapper for lodash to provide a function first syntax, which is truer to the functional style. Not very widespread.'},
     'ramda': {category: 'Assess', text: 'Has a function first syntax, which is truer to the functional style.'},
     'trine': {category: 'Assess', text: 'Depends on es6. Is very new.'}
+  },
+  'Promise Libraries': {
+    'when': {category: 'Trial or Alternative', text: 'Covers a wide range of support for promises.'},
+    'bluebird': {category: 'Assess', text: 'Looks nice. Similar to when.'},
+    'async': {category: 'Assess', text: 'Cleaner syntax but less mighty. Widespread use.'}
   },
   'Techniques': {
     'One-Click workspace setup': {category: 'Adopt', text: 'Good to add new project members or updating the stack.'},

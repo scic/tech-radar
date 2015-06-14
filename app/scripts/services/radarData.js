@@ -174,6 +174,11 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "underscore",
             "type": "Functional Libraries",
             "text": "The base lodash was forked from. Still active, but consider switching to lodash."
+          },
+          {
+            "label": "when",
+            "type": "Promise Libraries",
+            "text": "Covers a wide range of support for promises."
           }
         ]
       }
@@ -278,6 +283,16 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "trine",
             "type": "Functional Libraries",
             "text": "Depends on es6. Is very new."
+          },
+          {
+            "label": "bluebird",
+            "type": "Promise Libraries",
+            "text": "Looks nice. Similar to when."
+          },
+          {
+            "label": "async",
+            "type": "Promise Libraries",
+            "text": "Cleaner syntax but less mighty. Widespread use."
           }
         ]
       }
