@@ -11,15 +11,15 @@
         </div>
         <div class="radar-manager">
             <ul class="nav nav-tabs">
-                <li ng-repeat="status in radarData" ng-class="{active : status.active}">
+                <li ng-repeat="status in radarData track by status.label" ng-class="{active : status.active}">
                     <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
                 </li>
             </ul>
-            <div ng-repeat="status in radarData" ng-show="status.active" class="side-panel">
-                <div class="category" ng-repeat="category in status.categories" style="background-color: {{category.color}}">
+            <div ng-repeat="status in radarData track by status.label" ng-show="status.active" class="side-panel">
+                <div class="category" ng-repeat="category in status.categories track by category.label" style="background-color: {{category.color}}">
                     <h5 style="display: inline;">{{ category.label }}</h5>
                     <ul>
-                        <li ng-repeat="technology in category.technologies" ng-class="{'active-tech' : technology.active}">
+                        <li ng-repeat="technology in category.technologies track by technology.label" ng-class="{'active-tech' : technology.active}">
                           <a ng-click="selectTech(category, technology)">{{ technology.label }}</a><span class="technologyType">{{ technology.type }}</span>
                         </li>
                     </ul>
@@ -43,7 +43,7 @@
       </div>
       <h4>Technologies of the type {{activeTechnology.type}}</h4>
       <ul class="same-technologies">
-        <li ng-repeat="technology in technologiesOfSameType">
+        <li ng-repeat="technology in technologiesOfSameType track by technology.label">
           <a ng-click="selectTech(activeCategory, technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
         </li>
       </ul>
@@ -54,7 +54,7 @@
     
     <div class="row overview">
       <h1>Overview</h1>
-      <div ng-repeat="(label, technologies) in technologiesByType">
+      <div ng-repeat="(label, technologies) in technologiesByType track by label">
         <h3>{{label}}</h3>
         <table>
           <colgroup>
@@ -63,7 +63,7 @@
             <col span="1" style="width: 900px">
           </colgroup>
           <tbody>
-            <tr ng-repeat="technology in technologies">
+            <tr ng-repeat="technology in technologies track by technology.label">
               <td>{{technology.label}}</td>
               <td><span class="badge">{{technology.status}}</span></td>
               <td>{{technology.text}}</td>
