@@ -205,9 +205,13 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             d3.selectAll('.tech-label').each(function(status) {
               status.active = false;
               status.clicked = false;
+              status.highlight = false;
             });
             d.active = newClickState;
             d.clicked = newClickState;
+            radarService.radar.getTechnologiesOfSameType(d).forEach(function(technology) {
+              technology.highlight = newClickState;
+            });
             scope.$broadcast('tech-selected', d);
             redrawTechCircles();
           });
@@ -269,6 +273,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           
         technologies.each(function(d) {
           d3.select(this).classed('active', d.active);
+          d3.select(this).classed('highlight', d.highlight);
         });
 
         technologies.selectAll('text').transition()

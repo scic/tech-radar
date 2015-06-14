@@ -41,6 +41,14 @@ li > a {
   color: #4889ff;
   cursor: pointer;
   > circle {
+    fill: tomato !important;
+  }
+}
+
+.tech-label.highlight:not(.active) {
+  font-weight: 800;
+  color: gray;
+  > circle {
     fill: black !important;
   }
 }

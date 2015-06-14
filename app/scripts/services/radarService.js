@@ -51,11 +51,21 @@ angular.module('techRadarApp').factory('radarService', ['radarData', function(ra
           technology.status = status.label;
         });
       });
+      
+      this.allCategories = _.flatten(_.pluck(data, 'categories'));
+      this.allTechnologies = _.flatten(_.pluck(this.allCategories, 'technologies'));
     }
 
     Radar.prototype.getTechnologies = function() {
-      var categories = _.pluck(this.data, 'categories');
-      return _.flatten(_.pluck(_.flatten(categories), 'technologies'));
+      return this.allTechnologies;
+    };
+
+    Radar.prototype.getCategories = function() {
+      return this.allCategories;
+    };
+
+    Radar.prototype.getTechnologiesOfSameType = function(tech) {
+      return _.where(this.allTechnologies, {type: tech.type});
     };
     
     var radar = new Radar(radarData.title, radarData.data);
