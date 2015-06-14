@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('techRadarApp')
-  .controller('MainCtrl', ['$scope', 'radarService', function ($scope, radarService) {
+  .controller('MainCtrl', ['$scope', '$anchorScroll', '$location', 'radarService', function ($scope, $anchorScroll, $location, radarService) {
     var radar = radarService.radar;
     $scope.title = radar.title;
     $scope.radarData = radar.data;
@@ -65,5 +65,9 @@ angular.module('techRadarApp')
     };
     
     $scope.$watch('radarData', updateActive, true);
+    
+    $scope.scrollTo = function(id) {
+      $anchorScroll(id);
+    };
 
   }]);

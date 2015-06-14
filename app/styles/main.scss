@@ -15,7 +15,7 @@ h4 {
   font-size: 20px;
 }
 
-li > a {
+a {
   cursor: pointer;
 }
 
@@ -114,5 +114,11 @@ li > a {
   table td {
     border: 1px solid;
     padding: 5px;
+  }
+  
+  .highlight {
+    h3 {
+    color: #4889ff;
+    }
   }
 }
