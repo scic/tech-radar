@@ -33,18 +33,19 @@ var statusDefinitions = [
 
 // Map technology types to radar categories
 var typeToCategory = {
-  'Node Installer': 'Tools',
   'Node Version': 'Platforms',
+  'Node Installer': 'Tools',
   'IDE / Editor': 'Tools',
   'Build System': 'Tools',
-  'Javascript Enhancers': 'Languages & Frameworks',
   'Linter / Codestyle': 'Tools',
+  'Javascript Enhancers': 'Languages & Frameworks',
   'CSS Preprocessors': 'Languages & Frameworks',
   'CSS Frameworks': 'Languages & Frameworks',
   'Frontend Frameworks': 'Languages & Frameworks',
-  'Techniques': 'Techniques',
+  'Functional Libraries': 'Languages & Frameworks',
   'Package Managers': 'Tools',
-  'Live Reload': 'Tools'
+  'Live Reload': 'Tools',
+  'Techniques': 'Techniques'
 };
 
 // Your technologies grouped by type
@@ -111,6 +112,13 @@ var allData = {
     'browsersync': {category: 'Adopt', text: 'Supports reloading of frontend js files and injecting of css. Additionally supports the synching of page interactions over multiple browsers and devices.'},
     'livereload': {category: 'Trial or Alternative', text: 'Works good, but browsersync has more features.'},
     'nodemon': {category: 'Trial or Alternative', text: 'Restart the node server on file changes. Watcher is known to be slow on windows.'}
+  },
+  'Functional Libraries': {
+    'lodash': {category: 'Adopt', text: 'A lot of (functional) goodies for working with arrays, collections, objects. It has some extensions over underscore, is modularized, and more actively developed than underscore.'},
+    'underscore': {category: 'Trial or Alternative', text: 'The base lodash was forked from. Still active, but consider switching to lodash.'},
+    'lodash-fp': {category: 'Assess', text: 'A wrapper for lodash to provide a function first syntax, which is truer to the functional style. Not very widespread.'},
+    'ramda': {category: 'Assess', text: 'Has a function first syntax, which is truer to the functional style.'},
+    'trine': {category: 'Assess', text: 'Depends on es6. Is very new.'}
   },
   'Techniques': {
     'One-Click workspace setup': {category: 'Adopt', text: 'Good to add new project members or updating the stack.'},

@@ -89,6 +89,11 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "Angular 1",
             "type": "Frontend Frameworks",
             "text": "Huge community. Lots of documentation and modules"
+          },
+          {
+            "label": "lodash",
+            "type": "Functional Libraries",
+            "text": "A lot of (functional) goodies for working with arrays, collections, objects. It has some extensions over underscore, is modularized, and more actively developed than underscore."
           }
         ]
       }
@@ -164,6 +169,11 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "Ember",
             "type": "Frontend Frameworks",
             "text": "Good community. Good migration paths. Investigate it more."
+          },
+          {
+            "label": "underscore",
+            "type": "Functional Libraries",
+            "text": "The base lodash was forked from. Still active, but consider switching to lodash."
           }
         ]
       }
@@ -253,6 +263,21 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "Knockout",
             "type": "Frontend Frameworks",
             "text": "Angular, Ember, React seam to be more popular."
+          },
+          {
+            "label": "lodash-fp",
+            "type": "Functional Libraries",
+            "text": "A wrapper for lodash to provide a function first syntax, which is truer to the functional style. Not very widespread."
+          },
+          {
+            "label": "ramda",
+            "type": "Functional Libraries",
+            "text": "Has a function first syntax, which is truer to the functional style."
+          },
+          {
+            "label": "trine",
+            "type": "Functional Libraries",
+            "text": "Depends on es6. Is very new."
           }
         ]
       }
