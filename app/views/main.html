@@ -1,4 +1,4 @@
-<h1 id="mainTitle">{{title}}</h1>
+<h1>{{title}}</h1>
 <br>
 <div class="container">
     <div class="row">
@@ -20,7 +20,7 @@
                     <h5 style="display: inline;">{{ category.label }}</h5>
                     <ul>
                         <li ng-repeat="technology in category.technologies track by technology.label" ng-class="{'active-tech' : technology.active}">
-                          <a ng-click="selectTech(category, technology)">{{ technology.label }}</a><a class="technologyType" ng-click="scrollTo(technology.type)">{{ technology.type }}</a>
+                          <a ng-click="selectTech(technology)">{{ technology.label }}</a><a class="technologyType" ng-click="scrollTo(technology.type)">{{ technology.type }}</a>
                         </li>
                     </ul>
                 </div>
@@ -44,7 +44,7 @@
       <h4>Technologies of the type {{activeTechnology.type}}</h4>
       <ul class="same-technologies">
         <li ng-repeat="technology in technologiesOfSameType track by technology.label">
-          <a ng-click="selectTech(activeCategory, technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
+          <a ng-click="selectTech(technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
         </li>
       </ul>
     </div>
@@ -55,7 +55,7 @@
     <div class="row overview">
       <h1>Overview</h1>
       <div ng-repeat="(label, technologies) in technologiesByType track by label" ng-class="{highlight: activeTechnology.type === label}">
-        <h3 id="{{label}}">{{label}} <a class="technologyType" ng-click="scrollTo('mainTitle')">&#x2191;</a></h3>
+        <h3 id="{{label}}">{{label}} <a class="technologyType" ng-click="scrollTo()">&#x2191;</a></h3>
         <table>
           <colgroup>
             <col span="1" style="width: 150px">
@@ -64,7 +64,7 @@
           </colgroup>
           <tbody>
             <tr ng-repeat="technology in technologies track by technology.label">
-              <td>{{technology.label}}</td>
+              <td><a ng-click="selectTech(technology); scrollTo()">{{ technology.label }}</a></td>
               <td><span class="badge">{{technology.status}}</span></td>
               <td>{{technology.text}}</td>
             </tr>

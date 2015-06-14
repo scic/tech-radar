@@ -22,15 +22,19 @@ angular.module('techRadarApp')
       $('.nav-tabs li a[data-label="' + $scope.activeStatus.label + '"]').tab('show');
     });
     
-    $scope.selectTech = function(category, tech) {
+    $scope.selectTech = function(tech) {
       var setInactive = function(elem) {
         elem.clicked = false;
         elem.active = false;
         elem.highlight = false;
       };
-
+      
       radar.getCategories().forEach(setInactive);
       radar.getTechnologies().forEach(setInactive);
+      
+      var category = _.find(radar.getCategories(), function(category) {
+        return _.indexOf(category.technologies, tech) >= 0;
+      });
       
       category.active = true;
       tech.clicked = true;
@@ -67,6 +71,10 @@ angular.module('techRadarApp')
     $scope.$watch('radarData', updateActive, true);
     
     $scope.scrollTo = function(id) {
+      if(!id) {
+        $('html').scrollTop(0);
+        return;
+      }
       $anchorScroll(id);
     };
 
