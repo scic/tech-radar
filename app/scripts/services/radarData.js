@@ -66,9 +66,9 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Platforms",
         "technologies": [
           {
-            "label": "v0.10",
+            "label": "v4",
             "type": "Node Version",
-            "text": "The proven version. Use it, it works."
+            "text": "Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming)."
           }
         ]
       },
@@ -76,9 +76,14 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Languages & Frameworks",
         "technologies": [
           {
+            "label": "es6-babel",
+            "type": "Javascript Enhancers",
+            "text": "EcmaScript2015 (EcmaScript6) is the current javascript standard. So try it out now."
+          },
+          {
             "label": "sass",
             "type": "CSS Preprocessors",
-            "text": "Seams to be more widespread knowadays than LESS."
+            "text": "Seams to be more widespread knowadays than LESS. Even bootstrap 4 is migration from LESS to sass."
           },
           {
             "label": "bootstrap",
@@ -112,9 +117,14 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "gulp is just the better alternative. If you already are on grunt there is no immediate reason to switch to gulp, just consider it. If you haven't started with grunt, use gulp."
           },
           {
+            "label": "atom",
+            "type": "IDE / Editor",
+            "text": "Powerful editor, similar to sublime. Recommended as a free alternative."
+          },
+          {
             "label": "Sublime",
             "type": "IDE / Editor",
-            "text": "You can use it for free, but it will nag you constantly. So if you don't mind it, your okay here. If you wan't to pay for software consider Webstorm. It's in a similar price range, but has more refactoring and autocomplete features."
+            "text": "You can use it for free, but it will nag you constantly. So if you don't mind it, your okay here. But I recommended atom instead. If you wan't to pay for software consider Webstorm. It's in a similar price range, but has more refactoring and autocomplete features."
           },
           {
             "label": "jshint",
@@ -141,20 +151,15 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Platforms",
         "technologies": [
           {
-            "label": "v0.12",
+            "label": "v0.10",
             "type": "Node Version",
-            "text": "Brand new. There might still be some incompatablilities and bugs out there. It has a short lifespan because of the merger of nodejs and iojs. You should wait on that version."
+            "text": "The proven version. Will still be supported until October 2016. So consider moving to v4."
           }
         ]
       },
       {
         "label": "Languages & Frameworks",
         "technologies": [
-          {
-            "label": "es6-babel",
-            "type": "Javascript Enhancers",
-            "text": "EcmaScript6 will be the next standard. So try it out."
-          },
           {
             "label": "typescript",
             "type": "Javascript Enhancers",
@@ -192,14 +197,14 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Tools",
         "technologies": [
           {
-            "label": "atom",
-            "type": "IDE / Editor",
-            "text": "Interesting, but sadly still a bit unstable."
-          },
-          {
             "label": "brackets",
             "type": "IDE / Editor",
-            "text": "Interesting"
+            "text": "Interesting."
+          },
+          {
+            "label": "Visual Studio Code",
+            "type": "IDE / Editor",
+            "text": "Gains traction. Could be interesting for people that don't mind products from microsoft."
           },
           {
             "label": "jscs",
@@ -252,7 +257,7 @@ angular.module('techRadarApp').constant('radarData', {
           {
             "label": "Angular 2",
             "type": "Frontend Frameworks",
-            "text": "Still in developer preview. Best used with typescript."
+            "text": "Still in developer preview. Could be used for small prototypes. Best used with typescript (or babel). ng-upgrade should cover the migration from Angular 1 to 2."
           },
           {
             "label": "Aurelia",
@@ -335,9 +340,14 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Platforms",
         "technologies": [
           {
+            "label": "v0.12",
+            "type": "Node Version",
+            "text": "Better just use node v4. Or stick with the still wildly used v0.10 for the moment."
+          },
+          {
             "label": "iojs",
             "type": "Node Version",
-            "text": "If you already have it, stick with it until the new merged nodejs and iojs version is out. Otherwise if you really want cutting each use v0.12."
+            "text": "You should migrate to node v4."
           }
         ]
       },

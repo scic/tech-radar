@@ -59,18 +59,20 @@ var allData = {
   },
   'IDE / Editor': {
     'Webstorm': {category: 'Adopt', text: 'If you wan\'t to spend money for your IDE, spend it here. It has the best Javascript support with refactoring and autocomplete features.'},
-    'atom': {category: 'Assess', text: 'Interesting, but sadly still a bit unstable.'},
-    'brackets': {category: 'Assess', text: 'Interesting'},
-    'Sublime': {category: 'Trial or Alternative', text: 'You can use it for free, but it will nag you constantly. So if you don\'t mind it, your okay here. If you wan\'t to pay for software consider Webstorm. It\'s in a similar price range, but has more refactoring and autocomplete features.'},
-    'Eclipse': {category: 'Hold', text: 'Javasscript support is too bad right now. Coupled wit the slowness of Eclipse you\'re better off with a good editor.'}
+    'atom': {category: 'Trial or Alternative', text: 'Powerful editor, similar to sublime. Recommended as a free alternative.'},
+    'brackets': {category: 'Assess', text: 'Interesting.'},
+    'Sublime': {category: 'Trial or Alternative', text: 'You can use it for free, but it will nag you constantly. So if you don\'t mind it, your okay here. But I recommended atom instead. If you wan\'t to pay for software consider Webstorm. It\'s in a similar price range, but has more refactoring and autocomplete features.'},
+    'Eclipse': {category: 'Hold', text: 'Javasscript support is too bad right now. Coupled wit the slowness of Eclipse you\'re better off with a good editor.'},
+    'Visual Studio Code': {category: 'Assess', text: 'Gains traction. Could be interesting for people that don\'t mind products from microsoft.'}
   },
   'Node Version': {
-    'v0.10': {category: 'Adopt', text: 'The proven version. Use it, it works.'},
-    'v0.12': {category: 'Trial or Alternative', text: 'Brand new. There might still be some incompatablilities and bugs out there. It has a short lifespan because of the merger of nodejs and iojs. You should wait on that version.'},
-    'iojs': {category: 'Hold', text: 'If you already have it, stick with it until the new merged nodejs and iojs version is out. Otherwise if you really want cutting each use v0.12.'}
+    'v4': {category: 'Adopt', text: 'Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming).'},
+    'v0.10': {category: 'Trial or Alternative', text: 'The proven version. Will still be supported until October 2016. So consider moving to v4.'},
+    'v0.12': {category: 'Hold', text: 'Better just use node v4. Or stick with the still wildly used v0.10 for the moment.'},
+    'iojs': {category: 'Hold', text: 'You should migrate to node v4.'}
   },
   'Javascript Enhancers': {
-    'es6-babel': {category: 'Trial or Alternative', text: 'EcmaScript6 will be the next standard. So try it out.'},
+    'es6-babel': {category: 'Adopt', text: 'EcmaScript2015 (EcmaScript6) is the current javascript standard. So try it out now.'},
     'es6-traceur': {category: 'Hold', text: 'Better use babel. It produces more readable code and implements more features of es6.'},
     'typescript': {category: 'Trial or Alternative', text: 'If you are missing types in Javascript, this is it. Otherwise give es6-babel a spin.'},
     'ClojureScript': {category: 'Assess', text: 'Intresting'},
@@ -84,7 +86,7 @@ var allData = {
     'jscs': {category: 'Assess', text: 'Only a style checker. Eslint might provide these features aswell.'}
   },
   'CSS Preprocessors': {
-    'sass': {category: 'Adopt', text: 'Seams to be more widespread knowadays than LESS.'},
+    'sass': {category: 'Adopt', text: 'Seams to be more widespread knowadays than LESS. Even bootstrap 4 is migration from LESS to sass.'},
     'LESS': {category: 'Trial or Alternative', text: 'If you have a css framework that uses it, then use it, otherwise sass seams to be more widespread.'},
     'stylus': {category: 'Hold', text: 'To exotic to be considered.'},
     'Plain CSS': {category: 'Hold', text: 'You really should use a CSS preprocessor. You\'re gonna love it.'}
@@ -103,7 +105,7 @@ var allData = {
   },
   'Frontend Frameworks': {
     'Angular 1': {category: 'Adopt', text: 'Huge community. Lots of documentation and modules'},
-    'Angular 2': {category: 'Assess', text: 'Still in developer preview. Best used with typescript.'},
+    'Angular 2': {category: 'Assess', text: 'Still in developer preview. Could be used for small prototypes. Best used with typescript (or babel). ng-upgrade should cover the migration from Angular 1 to 2.'},
     'Ember': {category: 'Trial or Alternative', text: 'Good community. Good migration paths. Investigate it more.'},
     'Aurelia': {category: 'Assess', text: 'Interesting, but not wildly used right now.'},
     'React': {category: 'Assess', text: 'Fast rendering. Glimmer of Ember or the upcomming Angular 2 might be an alternative.'},
