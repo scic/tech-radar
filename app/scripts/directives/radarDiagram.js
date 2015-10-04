@@ -41,12 +41,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .sort(null);
 
       var categoryPie = pie(equalPortions);
-      var categoryArcs = {
-        'Tools': categoryPie[0],
-        'Techniques': categoryPie[1],
-        'Platforms': categoryPie[2],
-        'Languages & Frameworks': categoryPie[3]
-      };
+      var categoryArcs = _.object(_.zip(radarService.categories, categoryPie));
 
       var arc = d3.svg.arc();
 
@@ -171,7 +166,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         .attr('class', 'category');
 
       var technologies;
-      var truncatedLabelLength = 12;
+      var truncatedLabelLength = 14;
 
       function getTechLabelSubstring(label) {
         return (label.length <= truncatedLabelLength) ?

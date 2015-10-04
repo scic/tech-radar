@@ -71,8 +71,8 @@ angular.module('techRadarApp').factory('radarService', ['radarData', function(ra
     var radar = new Radar(radarData.title, radarData.data);
 
     function getCategories() {
-      var categories = _.pluck(radar.data, 'categories');
-      return _.pluck(categories, 'label');
+      var categories = _.flatten(_.pluck(radar.data, 'categories'));
+      return _.uniq(_.pluck(categories, 'label'));
     }
 
     function getStatuses() {
