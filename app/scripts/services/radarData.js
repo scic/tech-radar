@@ -53,28 +53,28 @@ angular.module('techRadarApp').constant('radarData', {
           {
             "label": "Infrastructure as code",
             "type": "Techniques",
-            "text": "Reproducible system setup"
+            "text": "Reproducible system setup and scalable system setup. E.g. setup Integration, Test, and Poduction Systems fast and ensure their the same."
           },
           {
             "label": "Application containers",
             "type": "Techniques",
             "text": "Application containers such as docker provide a simple reproducible deployment method."
+          },
+          {
+            "label": "Component structure",
+            "type": "Techniques",
+            "text": "Everthing that belongs to a component should be at the same location. E.g. html, js, css, routes, configuration."
           }
         ]
       },
       {
-        "label": "Platforms",
+        "label": "Platforms & Languages",
         "technologies": [
           {
-            "label": "v4",
+            "label": "Node.js v4",
             "type": "Node Version",
             "text": "Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming)."
-          }
-        ]
-      },
-      {
-        "label": "Languages & Frameworks",
-        "technologies": [
+          },
           {
             "label": "es6-babel",
             "type": "Javascript Enhancers",
@@ -84,7 +84,12 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "sass",
             "type": "CSS Preprocessors",
             "text": "Seams to be more widespread knowadays than LESS. Even bootstrap 4 is migration from LESS to sass."
-          },
+          }
+        ]
+      },
+      {
+        "label": "Frameworks & Libraries",
+        "technologies": [
           {
             "label": "bootstrap",
             "type": "CSS Frameworks",
@@ -96,9 +101,24 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "Huge community. Lots of documentation and modules"
           },
           {
+            "label": "Express",
+            "type": "Server Frameworks",
+            "text": "The nodejs web framework. Heavily used and feature rich."
+          },
+          {
             "label": "lodash",
             "type": "Functional Libraries",
             "text": "A lot of (functional) goodies for working with arrays, collections, objects. It has some extensions over underscore, is modularized, and more actively developed than underscore."
+          },
+          {
+            "label": "winston",
+            "type": "Server Logging Libraries",
+            "text": "Supports different log formats, transports/streams/sinks, custom log levels, string interpolation."
+          },
+          {
+            "label": "morgan",
+            "type": "Server Logging Libraries",
+            "text": "Logs each request of express."
           }
         ]
       }
@@ -148,18 +168,13 @@ angular.module('techRadarApp').constant('radarData', {
         "technologies": []
       },
       {
-        "label": "Platforms",
+        "label": "Platforms & Languages",
         "technologies": [
           {
-            "label": "v0.10",
+            "label": "Node.js v0.10",
             "type": "Node Version",
             "text": "The proven version. Will still be supported until October 2016. So consider moving to v4."
-          }
-        ]
-      },
-      {
-        "label": "Languages & Frameworks",
-        "technologies": [
+          },
           {
             "label": "typescript",
             "type": "Javascript Enhancers",
@@ -169,7 +184,12 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "LESS",
             "type": "CSS Preprocessors",
             "text": "If you have a css framework that uses it, then use it, otherwise sass seams to be more widespread."
-          },
+          }
+        ]
+      },
+      {
+        "label": "Frameworks & Libraries",
+        "technologies": [
           {
             "label": "Ember",
             "type": "Frontend Frameworks",
@@ -233,17 +253,18 @@ angular.module('techRadarApp').constant('radarData', {
         "technologies": []
       },
       {
-        "label": "Platforms",
-        "technologies": []
-      },
-      {
-        "label": "Languages & Frameworks",
+        "label": "Platforms & Languages",
         "technologies": [
           {
             "label": "ClojureScript",
             "type": "Javascript Enhancers",
             "text": "Intresting"
-          },
+          }
+        ]
+      },
+      {
+        "label": "Frameworks & Libraries",
+        "technologies": [
           {
             "label": "foundation",
             "type": "CSS Frameworks",
@@ -275,6 +296,11 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "Angular, Ember, React seam to be more popular."
           },
           {
+            "label": "Restify",
+            "type": "Server Frameworks",
+            "text": "Can only be used to build Rest-Apis on nodejs. But if only this functionality is required, it might be viable."
+          },
+          {
             "label": "lodash-fp",
             "type": "Functional Libraries",
             "text": "A wrapper for lodash to provide a function first syntax, which is truer to the functional style. Not very widespread."
@@ -298,6 +324,16 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "async",
             "type": "Promise Libraries",
             "text": "Cleaner syntax but less mighty. Widespread use."
+          },
+          {
+            "label": "bunyan",
+            "type": "Server Logging Libraries",
+            "text": "Json Logger. TODO assess"
+          },
+          {
+            "label": "Log4js",
+            "type": "Server Logging Libraries",
+            "text": "Some use it. TODO assess."
           }
         ]
       }
@@ -334,26 +370,27 @@ angular.module('techRadarApp').constant('radarData', {
       },
       {
         "label": "Techniques",
-        "technologies": []
-      },
-      {
-        "label": "Platforms",
         "technologies": [
           {
-            "label": "v0.12",
-            "type": "Node Version",
-            "text": "Better just use node v4. Or stick with the still wildly used v0.10 for the moment."
-          },
-          {
-            "label": "iojs",
-            "type": "Node Version",
-            "text": "You should migrate to node v4."
+            "label": "Callbacks",
+            "type": "Techniques",
+            "text": "Use Promises they are much easier to process, chain and group."
           }
         ]
       },
       {
-        "label": "Languages & Frameworks",
+        "label": "Platforms & Languages",
         "technologies": [
+          {
+            "label": "Node.js v0.12",
+            "type": "Node Version",
+            "text": "Better just use node v4. Or stick with the still wildly used v0.10 for the moment."
+          },
+          {
+            "label": "io.js",
+            "type": "Node Version",
+            "text": "You should migrate to node v4."
+          },
           {
             "label": "es6-traceur",
             "type": "Javascript Enhancers",
@@ -380,6 +417,10 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "You really should use a CSS preprocessor. You're gonna love it."
           }
         ]
+      },
+      {
+        "label": "Frameworks & Libraries",
+        "technologies": []
       }
     ]
   }

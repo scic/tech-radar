@@ -9,7 +9,7 @@
 var title = 'Javascript Technology Radar';
 
 // List of your categories
-var categories = ['Tools', 'Techniques', 'Platforms', 'Languages & Frameworks'];
+var categories = ['Tools', 'Techniques', 'Platforms & Languages', 'Frameworks & Libraries'];
 
 // The status names with description
 var statusDefinitions = [
@@ -33,17 +33,19 @@ var statusDefinitions = [
 
 // Map technology types to radar categories
 var typeToCategory = {
-  'Node Version': 'Platforms',
+  'Node Version': 'Platforms & Languages',
   'Node Installer': 'Tools',
   'IDE / Editor': 'Tools',
   'Build System': 'Tools',
   'Linter / Codestyle': 'Tools',
-  'Javascript Enhancers': 'Languages & Frameworks',
-  'CSS Preprocessors': 'Languages & Frameworks',
-  'CSS Frameworks': 'Languages & Frameworks',
-  'Frontend Frameworks': 'Languages & Frameworks',
-  'Functional Libraries': 'Languages & Frameworks',
-  'Promise Libraries': 'Languages & Frameworks',
+  'Javascript Enhancers': 'Platforms & Languages',
+  'CSS Preprocessors': 'Platforms & Languages',
+  'CSS Frameworks': 'Frameworks & Libraries',
+  'Frontend Frameworks': 'Frameworks & Libraries',
+  'Server Frameworks': 'Frameworks & Libraries',
+  'Functional Libraries': 'Frameworks & Libraries',
+  'Promise Libraries': 'Frameworks & Libraries',
+  'Server Logging Libraries': 'Frameworks & Libraries',
   'Package Managers': 'Tools',
   'Live Reload': 'Tools',
   'Techniques': 'Techniques'
@@ -66,10 +68,10 @@ var allData = {
     'Visual Studio Code': {category: 'Assess', text: 'Gains traction. Could be interesting for people that don\'t mind products from microsoft.'}
   },
   'Node Version': {
-    'v4': {category: 'Adopt', text: 'Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming).'},
-    'v0.10': {category: 'Trial or Alternative', text: 'The proven version. Will still be supported until October 2016. So consider moving to v4.'},
-    'v0.12': {category: 'Hold', text: 'Better just use node v4. Or stick with the still wildly used v0.10 for the moment.'},
-    'iojs': {category: 'Hold', text: 'You should migrate to node v4.'}
+    'Node.js v4': {category: 'Adopt', text: 'Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming).'},
+    'Node.js v0.10': {category: 'Trial or Alternative', text: 'The proven version. Will still be supported until October 2016. So consider moving to v4.'},
+    'Node.js v0.12': {category: 'Hold', text: 'Better just use node v4. Or stick with the still wildly used v0.10 for the moment.'},
+    'io.js': {category: 'Hold', text: 'You should migrate to node v4.'}
   },
   'Javascript Enhancers': {
     'es6-babel': {category: 'Adopt', text: 'EcmaScript2015 (EcmaScript6) is the current javascript standard. So try it out now.'},
@@ -111,6 +113,10 @@ var allData = {
     'React': {category: 'Assess', text: 'Fast rendering. Glimmer of Ember or the upcomming Angular 2 might be an alternative.'},
     'Knockout': {category: 'Assess', text: 'Angular, Ember, React seam to be more popular.'}
   },
+  'Server Frameworks': {
+    'Express': {category: 'Adopt', text: 'The nodejs web framework. Heavily used and feature rich.'},
+    'Restify': {category: 'Assess', text: 'Can only be used to build Rest-Apis on nodejs. But if only this functionality is required, it might be viable.'},
+  },
   'Live Reload': {
     'browsersync': {category: 'Adopt', text: 'Supports reloading of frontend js files and injecting of css. Additionally supports the synching of page interactions over multiple browsers and devices.'},
     'livereload': {category: 'Trial or Alternative', text: 'Works good, but browsersync has more features.'},
@@ -128,10 +134,18 @@ var allData = {
     'bluebird': {category: 'Assess', text: 'Looks nice. Similar to when.'},
     'async': {category: 'Assess', text: 'Cleaner syntax but less mighty. Widespread use.'}
   },
+  'Server Logging Libraries': {
+    'winston': {category: 'Adopt', text: 'Supports different log formats, transports/streams/sinks, custom log levels, string interpolation.'},
+    'morgan': {category: 'Adopt', text: 'Logs each request of express.'},
+    'bunyan': {category: 'Assess', text: 'Json Logger. TODO assess'},
+    'Log4js': {category: 'Assess', text: 'Some use it. TODO assess.'}
+  },
   'Techniques': {
     'One-Click workspace setup': {category: 'Adopt', text: 'Good to add new project members or updating the stack.'},
-    'Infrastructure as code': {category: 'Adopt', text: 'Reproducible system setup'},
-    'Application containers': {category: 'Adopt', text: 'Application containers such as docker provide a simple reproducible deployment method.'}
+    'Infrastructure as code': {category: 'Adopt', text: 'Reproducible system setup and scalable system setup. E.g. setup Integration, Test, and Poduction Systems fast and ensure their the same.'},
+    'Application containers': {category: 'Adopt', text: 'Application containers such as docker provide a simple reproducible deployment method.'},
+    'Component structure': {category: 'Adopt', text: 'Everthing that belongs to a component should be at the same location. E.g. html, js, css, routes, configuration.'},
+    'Callbacks': {category: 'Hold', text: 'Use Promises they are much easier to process, chain and group.'}
   }
 };
 
