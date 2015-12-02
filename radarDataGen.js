@@ -46,6 +46,7 @@ var typeToCategory = {
   'Functional Libraries': 'Frameworks & Libraries',
   'Promise Libraries': 'Frameworks & Libraries',
   'Server Logging Libraries': 'Frameworks & Libraries',
+  'Database Libraries': 'Frameworks & Libraries',
   'Package Managers': 'Tools',
   'Live Reload': 'Tools',
   'Techniques': 'Techniques'
@@ -68,18 +69,20 @@ var allData = {
     'Visual Studio Code': {category: 'Assess', text: 'Gains traction. Could be interesting for people that don\'t mind products from microsoft.'}
   },
   'Node Version': {
-    'Node.js v4': {category: 'Adopt', text: 'Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming).'},
-    'Node.js v0.10': {category: 'Trial or Alternative', text: 'The proven version. Will still be supported until October 2016. So consider moving to v4.'},
-    'Node.js v0.12': {category: 'Hold', text: 'Better just use node v4. Or stick with the still wildly used v0.10 for the moment.'},
+    'Node.js v5': {category: 'Trial or Alternative', text: 'This is a stable release but incooperates the latest changes. New versions are released very often. Use it only for prototypes, short-lived projects, or when you need the additional features it provides.'},
+    'Node.js v4': {category: 'Adopt', text: 'This is the current LTS release. It will be maintainted until 2018. This realease merges iojs and Node.js again. Long term projects should stick with this release.'},
+    'Node.js v0.10': {category: 'Hold', text: 'You should slowly begin migrating to Nodejs v4 LTS. The upgrade should not be very work intensive. 0.10 will still be supported until October 2016.'},
+    'Node.js v0.12': {category: 'Hold', text: 'Better just use node v4. I can\'t think of a reason not to upgrade.'},
     'io.js': {category: 'Hold', text: 'You should migrate to node v4.'}
   },
   'Javascript Enhancers': {
     'es6-babel': {category: 'Adopt', text: 'EcmaScript2015 (EcmaScript6) is the current javascript standard. So try it out now.'},
     'es6-traceur': {category: 'Hold', text: 'Better use babel. It produces more readable code and implements more features of es6.'},
+    'es6 native': {category: 'Trial or Alternative', text: 'EcmaScript2015 is supported to some extend by new Node.js versions. On the server side at least Node.js v4 is recommended. Sadly on the client side you can not force people to use new browser. So you need babel there. Thus you might want babel in the server aswell to support the same feature set of es6.'},
     'typescript': {category: 'Trial or Alternative', text: 'If you are missing types in Javascript, this is it. Otherwise give es6-babel a spin.'},
     'ClojureScript': {category: 'Assess', text: 'Intresting'},
     'Coffescript': {category: 'Hold', text: 'Replaced by es6.'},
-    'Google Dart': {category: 'Hold', text: 'Failed to gain traction until now.'}
+    'Google Dart': {category: 'Hold', text: 'Failed to gain traction until now. Only supported by one company.'}
   },
   'Linter / Codestyle': {
     'eslint': {category: 'Adopt', text: 'Has a plugin architecture to include linters for framework specific code. E.g. for Angular or Ember. You can add your own ones. Also has codestyle checking ability. A slight performance penalty to jshint, since it builds an AST.'},
@@ -99,7 +102,9 @@ var allData = {
     'iconic': {category: 'Assess', text: 'More mobile centric.'}
   },
   'Package Managers': {
-    'npm': {category: 'Adopt', text: 'It\'s everywhere, just use it.'},
+    'npm v3': {category: 'Trial or Alternative', text: 'It is still very new, but provides some advantages like a flat directory structure.'},
+    'npm v2': {category: 'Adopt', text: 'Is bundled with Node.js v4 LTS. It is very stable and currently widly used.'},
+    'npm v1': {category: 'Hold', text: 'v2 has more features and more stable. Usage will go down quickly.'},
     'bower': {category: 'Adopt', text: 'A frontend only package manager. Widly used and works without problems.'},
     'browserify': {category: 'Assess', text: 'A frontend package manager. Uses npm modules and turns them into frontend modules. Has certain build steps included, which might interfere with your custom build.'},
     'jspm': {category: 'Assess', text: 'Interesting.'},
@@ -132,13 +137,19 @@ var allData = {
   'Promise Libraries': {
     'when': {category: 'Trial or Alternative', text: 'Covers a wide range of support for promises.'},
     'bluebird': {category: 'Assess', text: 'Looks nice. Similar to when.'},
-    'async': {category: 'Assess', text: 'Cleaner syntax but less mighty. Widespread use.'}
+    'async': {category: 'Assess', text: 'Cleaner syntax but less mighty. Widespread use.'},
+    'es6-promise': {category: 'Assess', text: 'Polyfills es6 promises. But has no additional promise handling functionality.'},
+    'RSVP.js': {category: 'Assess', text: 'A small promise library.'}
   },
   'Server Logging Libraries': {
     'winston': {category: 'Adopt', text: 'Supports different log formats, transports/streams/sinks, custom log levels, string interpolation.'},
     'morgan': {category: 'Adopt', text: 'Logs each request of express.'},
     'bunyan': {category: 'Assess', text: 'Json Logger. TODO assess'},
     'Log4js': {category: 'Assess', text: 'Some use it. TODO assess.'}
+  },
+  'Database Libraries': {
+    'mongoose': {category: 'Adopt', text: 'The most widly used way to interact with mongodb in Node.js.'},
+    'bookshelf.js': {category: 'Assess', text: 'An orm mapper fr sql.'}
   },
   'Techniques': {
     'One-Click workspace setup': {category: 'Adopt', text: 'Good to add new project members or updating the stack.'},

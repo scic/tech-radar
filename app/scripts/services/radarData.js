@@ -26,9 +26,9 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "Has a plugin architecture to include linters for framework specific code. E.g. for Angular or Ember. You can add your own ones. Also has codestyle checking ability. A slight performance penalty to jshint, since it builds an AST."
           },
           {
-            "label": "npm",
+            "label": "npm v2",
             "type": "Package Managers",
-            "text": "It's everywhere, just use it."
+            "text": "Is bundled with Node.js v4 LTS. It is very stable and currently widly used."
           },
           {
             "label": "bower",
@@ -73,7 +73,7 @@ angular.module('techRadarApp').constant('radarData', {
           {
             "label": "Node.js v4",
             "type": "Node Version",
-            "text": "Brand new, but it is the future since iojs and node merged. Long term projects should stick with the LTS release (forthcomming)."
+            "text": "This is the current LTS release. It will be maintainted until 2018. This realease merges iojs and Node.js again. Long term projects should stick with this release."
           },
           {
             "label": "es6-babel",
@@ -119,6 +119,11 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "morgan",
             "type": "Server Logging Libraries",
             "text": "Logs each request of express."
+          },
+          {
+            "label": "mongoose",
+            "type": "Database Libraries",
+            "text": "The most widly used way to interact with mongodb in Node.js."
           }
         ]
       }
@@ -152,6 +157,11 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "Configurable version of jslint. It's good, but consider migrating to eslint."
           },
           {
+            "label": "npm v3",
+            "type": "Package Managers",
+            "text": "It is still very new, but provides some advantages like a flat directory structure."
+          },
+          {
             "label": "livereload",
             "type": "Live Reload",
             "text": "Works good, but browsersync has more features."
@@ -171,9 +181,14 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Platforms & Languages",
         "technologies": [
           {
-            "label": "Node.js v0.10",
+            "label": "Node.js v5",
             "type": "Node Version",
-            "text": "The proven version. Will still be supported until October 2016. So consider moving to v4."
+            "text": "This is a stable release but incooperates the latest changes. New versions are released very often. Use it only for prototypes, short-lived projects, or when you need the additional features it provides."
+          },
+          {
+            "label": "es6 native",
+            "type": "Javascript Enhancers",
+            "text": "EcmaScript2015 is supported to some extend by new Node.js versions. On the server side at least Node.js v4 is recommended. Sadly on the client side you can not force people to use new browser. So you need babel there. Thus you might want babel in the server aswell to support the same feature set of es6."
           },
           {
             "label": "typescript",
@@ -326,6 +341,16 @@ angular.module('techRadarApp').constant('radarData', {
             "text": "Cleaner syntax but less mighty. Widespread use."
           },
           {
+            "label": "es6-promise",
+            "type": "Promise Libraries",
+            "text": "Polyfills es6 promises. But has no additional promise handling functionality."
+          },
+          {
+            "label": "RSVP.js",
+            "type": "Promise Libraries",
+            "text": "A small promise library."
+          },
+          {
             "label": "bunyan",
             "type": "Server Logging Libraries",
             "text": "Json Logger. TODO assess"
@@ -334,6 +359,11 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "Log4js",
             "type": "Server Logging Libraries",
             "text": "Some use it. TODO assess."
+          },
+          {
+            "label": "bookshelf.js",
+            "type": "Database Libraries",
+            "text": "An orm mapper fr sql."
           }
         ]
       }
@@ -365,6 +395,11 @@ angular.module('techRadarApp').constant('radarData', {
             "label": "jslint",
             "type": "Linter / Codestyle",
             "text": "Not configurable. Just replace it."
+          },
+          {
+            "label": "npm v1",
+            "type": "Package Managers",
+            "text": "v2 has more features and more stable. Usage will go down quickly."
           }
         ]
       },
@@ -382,9 +417,14 @@ angular.module('techRadarApp').constant('radarData', {
         "label": "Platforms & Languages",
         "technologies": [
           {
+            "label": "Node.js v0.10",
+            "type": "Node Version",
+            "text": "You should slowly begin migrating to Nodejs v4 LTS. The upgrade should not be very work intensive. 0.10 will still be supported until October 2016."
+          },
+          {
             "label": "Node.js v0.12",
             "type": "Node Version",
-            "text": "Better just use node v4. Or stick with the still wildly used v0.10 for the moment."
+            "text": "Better just use node v4. I can't think of a reason not to upgrade."
           },
           {
             "label": "io.js",
@@ -404,7 +444,7 @@ angular.module('techRadarApp').constant('radarData', {
           {
             "label": "Google Dart",
             "type": "Javascript Enhancers",
-            "text": "Failed to gain traction until now."
+            "text": "Failed to gain traction until now. Only supported by one company."
           },
           {
             "label": "stylus",
