@@ -13,8 +13,4 @@ See it in action with the **[Example Radar](http://scic.github.io/tech-radar).**
 
 ## Build with your own data
 
-Edit the content in the generator file called **radarDataGen.js** then run it:
-
-    node radarDataGen.js
-    
-This will update the radarData.js file in the application.
+The content of the radar is located in the app/scripts/services/radarData.js file in the application. Change it to your likings.
