@@ -1,5 +1,11 @@
-<h1>{{title}}</h1>
+<div class="radar-chooser">
+  <label>Choose radar</label>
+  <select ng-model="selectedRadar" ng-options="item as item for item in radarDescriptions"></select>
+</div>
+
+<h2>{{title}}</h2>
 <br>
+
 <div class="container">
     <div class="row">
         <div class="pull-left">
@@ -7,9 +13,10 @@
                 <h3>{{activeCategory.label}}</h3>
                 <h4>{{activeStatus.label}}</h4>
             </span>
-            <radar-diagram height="800" width="800">
+            <radar-diagram ng-if="rendered" height="800" width="800">
         </div>
         <div class="radar-manager">
+        
             <ul class="nav nav-tabs">
                 <li ng-repeat="status in radarData track by status.label" ng-class="{active : status.active}">
                     <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
