@@ -75,6 +75,8 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
 
         return Math.max(0, innerRadiusHelper(currentOuterRadius, ringArea));
       }
+      
+      var abortOverlapEvasion = 0;
 
       function isOverlappingAnotherPoint(o) {
 //         function distance(a, b) {
@@ -95,6 +97,11 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             }
           }
         });
+        
+        if(abortOverlapEvasion++ > 1000) {
+          $log.info('Abort overlap evasion for', o.label);
+          return false;
+        }
         return foundOne;
       }
 
@@ -217,6 +224,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             while (!d.x || !d.y || isOverlappingAnotherPoint(d)) {
               applyRandomXY(parentData.arc, d);
             }
+            abortOverlapEvasion = 0;
             return d;
           })
           .text(function (d) {
