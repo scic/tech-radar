@@ -23,8 +23,6 @@ angular.module('techRadarApp')
       $scope.technologiesByType = _.groupBy(radar.getTechnologies(), 'type');
       $scope.setActive($scope.radarData[0]);
     };
-    initRadar(radarService.getRadar());
-    $scope.rendered = true;
     
     $scope.selectedRadar = radarService.selectedRadarTitle;
     $scope.radarDescriptions = radarService.radarDescriptions;
