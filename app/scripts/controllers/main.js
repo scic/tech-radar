@@ -1,19 +1,12 @@
 'use strict';
 
 angular.module('techRadarApp')
-  .controller('MainCtrl', ['$scope', '$anchorScroll', '$location', 'radarService', function ($scope, $anchorScroll, $location, radarService) {
-    var radar = radarService.radar;
-    $scope.title = radar.title;
-    $scope.radarData = radar.data;
-    
-    $scope.technologiesByType = _.groupBy(radar.getTechnologies(), 'type');
+  .controller('MainCtrl', ['$scope', '$anchorScroll', '$location', '$timeout', 'radarService', function ($scope, $anchorScroll, $location, $timeout, radarService) {
     
     $scope.setActive = function(status) {
       _.each($scope.radarData, function(status) { status.active = false; });
       status.active = true;
     };
-    
-    $scope.setActive($scope.radarData[0]);
     
     $scope.$on('tech-selected', function(e, tech) {
       $scope.activeTechnology = tech;
@@ -21,6 +14,21 @@ angular.module('techRadarApp')
       $scope.setActive($scope.activeStatus);
       $('.nav-tabs li a[data-label="' + $scope.activeStatus.label + '"]').tab('show');
     });
+    
+    var radar;
+    var initRadar = function(radarParam) {
+      radar = radarParam;
+      $scope.title = radar.title;
+      $scope.radarData = radar.data;
+      $scope.technologiesByType = _.groupBy(radar.getTechnologies(), 'type');
+      $scope.setActive($scope.radarData[0]);
+    };
+    initRadar(radarService.getRadar());
+    $scope.rendered = true;
+    
+    $scope.selectedRadar = radarService.selectedRadarTitle;
+    $scope.radarDescriptions = radarService.radarDescriptions;
+
     
     $scope.selectTech = function(tech) {
       var setInactive = function(elem) {
@@ -69,6 +77,15 @@ angular.module('techRadarApp')
     };
     
     $scope.$watch('radarData', updateActive, true);
+    
+    $scope.$watch('selectedRadar', function(){
+      radar = radarService.selectRadar($scope.selectedRadar);
+      initRadar(radar);
+      $scope.rendered = false;
+      $timeout(function() {
+        $scope.rendered = true;
+      });
+    });
     
     $scope.scrollTo = function(id) {
       if(!id) {

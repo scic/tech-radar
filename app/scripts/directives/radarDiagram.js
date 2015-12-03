@@ -87,7 +87,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         var yThreshold = 0.045 * diagramRadius;
 
         var foundOne = false;
-        _.each(radarService.radar.getTechnologies(), function (p) {
+        _.each(radarService.getRadar().getTechnologies(), function (p) {
           if (o !== p && o.x && o.y && p.x && p.y) {
             if (Math.abs(o.x - p.x) < xThreshold && Math.abs(o.y - p.y) < yThreshold) {
               //distance(o, p) < threshold) {
@@ -117,7 +117,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         d.y = r * Math.sin(theta - (Math.PI / 2));
       }
 
-      var arcStatusEnter = svgArcs.selectAll('g').data(radarService.radar.data).enter().append('g').attr('class', 'ring');
+      var arcStatusEnter = svgArcs.selectAll('g').data(radarService.getRadar().data).enter().append('g').attr('class', 'ring');
       var arcCategoryEnter = arcStatusEnter.selectAll('path')
         .data(function (d) {
           return d.categories;
@@ -151,7 +151,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
           redrawTechCircles();
         });
 
-      var nodeStatusEnter = svgNodes.selectAll('g').data(radarService.radar.data).enter().append('g').attr('class', 'tech');
+      var nodeStatusEnter = svgNodes.selectAll('g').data(radarService.getRadar().data).enter().append('g').attr('class', 'tech');
 
       var nodeCategoryEnter = nodeStatusEnter.selectAll('g')
         .data(function (d) {
@@ -204,7 +204,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
             });
             d.active = newClickState;
             d.clicked = newClickState;
-            radarService.radar.getTechnologiesOfSameType(d).forEach(function(technology) {
+            radarService.getRadar().getTechnologiesOfSameType(d).forEach(function(technology) {
               technology.highlight = newClickState;
             });
             scope.$broadcast('tech-selected', d);
@@ -241,7 +241,7 @@ angular.module('techRadarApp').directive('radarDiagram', ['$log', 'radarService'
         redrawTechCircles(true);
       }
 
-      scope.radarData = radarService.radar.data;
+      scope.radarData = radarService.getRadar().data;
       scope.$watch('radarData', function () {
         drawTech();
       }, true);

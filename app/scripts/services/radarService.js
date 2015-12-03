@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('techRadarApp').factory('radarService', ['radarData', function(radarData) {
-
+  
     function Radar(title, data) {
       this.title = title || 'Technology Radar';
       this.data = data ? data : [
@@ -68,7 +68,8 @@ angular.module('techRadarApp').factory('radarService', ['radarData', function(ra
       return _.where(this.allTechnologies, {type: tech.type});
     };
     
-    var radar = new Radar(radarData.title, radarData.data);
+    var selectedRadar = radarData[0];
+    var radar = new Radar(selectedRadar.title, selectedRadar.data);
 
     function getCategories() {
       var categories = _.flatten(_.pluck(radar.data, 'categories'));
@@ -78,6 +79,22 @@ angular.module('techRadarApp').factory('radarService', ['radarData', function(ra
     function getStatuses() {
       return _.pluck(radar.data, 'label');
     }
+    
+    var radarDescriptions = _.pluck(radarData, 'title');
+    
+    var selectRadar = function(title) {
+      var selectedRadar = _.findWhere(radarData, {'title': title});
+      radar = new Radar(selectedRadar.title, selectedRadar.data);
+      return radar;
+    };
 
-    return { radar: radar, categories: getCategories(), statuses: getStatuses() };
+    return {
+      getRadar: function() {
+        return radar;
+      },
+      radarDescriptions: radarDescriptions,
+      selectedRadarTitle: radar.title,
+      selectRadar: selectRadar,
+      categories: getCategories(),
+      statuses: getStatuses() };
   }]);
