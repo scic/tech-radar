@@ -19,8 +19,8 @@ a {
   cursor: pointer;
 }
 
-.container {
-  width: 1400px;
+.main.container {
+  width: 1280px;
 }
 
 .mouseover-title {
@@ -74,7 +74,7 @@ a {
   }
   
   .side-panel {
-    width: 400px;
+    width: 405px;
     
     .active-tech {
       font-weight: bold;
@@ -111,9 +111,12 @@ a {
 .overview {
   margin-top: 50px;
   
-  table td {
-    border: 1px solid;
-    padding: 5px;
+  table {
+    width: 100%;
+    td {
+      border: 1px solid;
+      padding: 5px;
+    }
   }
   
   .highlight {

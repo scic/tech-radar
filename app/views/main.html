@@ -1,82 +1,82 @@
-<div class="radar-chooser">
-  <label>Choose radar</label>
-  <select ng-model="selectedRadar" ng-options="item as item for item in radarDescriptions"></select>
+<div class="row">
+  <div class="radar-chooser">
+    <label>Choose radar</label>
+    <select ng-model="selectedRadar" ng-options="item as item for item in radarDescriptions"></select>
+  </div>
+
+  <h2>{{title}}</h2>
+  <br>
 </div>
 
-<h2>{{title}}</h2>
-<br>
-
-<div class="container">
-    <div class="row">
-        <div class="pull-left">
-            <span class="mouseover-title">
-                <h3>{{activeCategory.label}}</h3>
-                <h4>{{activeStatus.label}}</h4>
-            </span>
-            <radar-diagram ng-if="rendered" height="800" width="800"/>
-        </div>
-        <div class="radar-manager">
-        
-            <ul class="nav nav-tabs">
-                <li ng-repeat="status in radarData track by status.label" ng-class="{active : status.active}">
-                    <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
-                </li>
-            </ul>
-            <div ng-repeat="status in radarData track by status.label" ng-show="status.active" class="side-panel">
-                <div class="category" ng-repeat="category in status.categories track by category.label" style="background-color: {{category.color}}">
-                    <h5 style="display: inline;">{{ category.label }}</h5>
-                    <ul>
-                        <li ng-repeat="technology in category.technologies track by technology.label" ng-class="{'active-tech' : technology.active}">
-                          <a ng-click="selectTech(technology)">{{ technology.label }}</a><a class="technologyType" ng-click="scrollTo(technology.type)">{{ technology.type }}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                  <h3>{{status.label}}</h3>
-                  {{status.text}}
-                </div>
+<div class="row">
+    <div class="pull-left">
+        <span class="mouseover-title">
+            <h3>{{activeCategory.label}}</h3>
+            <h4>{{activeStatus.label}}</h4>
+        </span>
+        <radar-diagram ng-if="rendered" height="875" width="875"/>
+    </div>
+    <div class="radar-manager">
+    
+        <ul class="nav nav-tabs">
+            <li ng-repeat="status in radarData track by status.label" ng-class="{active : status.active}">
+                <a data-label="{{ status.label }}" ng-click="setActive(status)">{{ status.label }}</a>
+            </li>
+        </ul>
+        <div ng-repeat="status in radarData track by status.label" ng-show="status.active" class="side-panel">
+            <div class="category" ng-repeat="category in status.categories track by category.label" style="background-color: {{category.color}}">
+                <h5 style="display: inline;">{{ category.label }}</h5>
+                <ul>
+                    <li ng-repeat="technology in category.technologies track by technology.label" ng-class="{'active-tech' : technology.active}">
+                      <a ng-click="selectTech(technology)">{{ technology.label }}</a><a class="technologyType" ng-click="scrollTo(technology.type)">{{ technology.type }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+              <h3>{{status.label}}</h3>
+              {{status.text}}
             </div>
         </div>
     </div>
-    
-    <div class="row info" ng-if="activeTechnology">
-      <div>
-        <h2>
-          {{activeTechnology.label}}
-          <span class="badge">{{activeTechnology.status}}</span>
-          <a ng-click="scrollTo(activeTechnology.type)" class="technologyType">{{activeTechnology.type}}</a>
-        </h2>
-        <div class="well well-lg">{{activeTechnology.text}}</div>
-      </div>
-      <h4>Technologies of the type {{activeTechnology.type}}</h4>
-      <ul class="same-technologies">
-        <li ng-repeat="technology in technologiesOfSameType track by technology.label">
-          <a ng-click="selectTech(technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
-        </li>
-      </ul>
-    </div>
-    <div class="row info" ng-if="!activeTechnology">
-      Click on a technology in the radar or the list to show information about it.
-    </div>
-    
-    <div class="row overview">
-      <h1>Overview</h1>
-      <div ng-repeat="(label, technologies) in technologiesByType track by label" ng-class="{highlight: activeTechnology.type === label}">
-        <h3 id="{{label}}">{{label}} <a class="technologyType" ng-click="scrollTo()">&#x2191;</a></h3>
-        <table>
-          <colgroup>
-            <col span="1" style="width: 150px">
-            <col span="1" style="width: 150px">
-            <col span="1" style="width: 900px">
-          </colgroup>
-          <tbody>
-            <tr ng-repeat="technology in technologies track by technology.label">
-              <td><a ng-click="selectTech(technology); scrollTo()">{{ technology.label }}</a></td>
-              <td><span class="badge">{{technology.status}}</span></td>
-              <td>{{technology.text}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+</div>
+
+<div class="row info" ng-if="activeTechnology">
+  <div>
+    <h2>
+      {{activeTechnology.label}}
+      <span class="badge">{{activeTechnology.status}}</span>
+      <a ng-click="scrollTo(activeTechnology.type)" class="technologyType">{{activeTechnology.type}}</a>
+    </h2>
+    <div class="well well-lg">{{activeTechnology.text}}</div>
+  </div>
+  <h4>Technologies of the type {{activeTechnology.type}}</h4>
+  <ul class="same-technologies">
+    <li ng-repeat="technology in technologiesOfSameType track by technology.label">
+      <a ng-click="selectTech(technology)">{{technology.label}}</a> <span class="badge">{{technology.status}}</span>
+    </li>
+  </ul>
+</div>
+<div class="row info" ng-if="!activeTechnology">
+  Click on a technology in the radar or the list to show information about it.
+</div>
+
+<div class="row overview">
+  <h1>Overview</h1>
+  <div ng-repeat="(label, technologies) in technologiesByType track by label" ng-class="{highlight: activeTechnology.type === label}">
+    <h3 id="{{label}}">{{label}} <a class="technologyType" ng-click="scrollTo()">&#x2191;</a></h3>
+    <table>
+      <colgroup>
+        <col span="1" style="width: 150px">
+        <col span="1" style="width: 150px">
+        <col span="1" style="width: 900px">
+      </colgroup>
+      <tbody>
+        <tr ng-repeat="technology in technologies track by technology.label">
+          <td><a ng-click="selectTech(technology); scrollTo()">{{ technology.label }}</a></td>
+          <td><span class="badge">{{technology.status}}</span></td>
+          <td>{{technology.text}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
